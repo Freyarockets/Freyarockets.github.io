@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <title>Connect and Buy FreyaTokens</title>
+</head>
+<body>
+  
+<p>	<strong>START HERE TO MAKE PAYMENT FOR FREYAOSTOKENS.</strong></p>
+<button id="connectButton"><strong>Connect</strong> <strong>Wallet</strong></button>
+  <p id="status"><img src="file:///C|/Users/CHOLO/Documents/linux/FreyaOSIcons/iconFreyaOS (1) (1).png" width="100" height="100" alt=""/></p>
+<p><strong>Input Amount To Buy</strong></p>
+<p><strong>(FRRCETH,FRRCETH2,PANDORAETH)</strong></p>
+<p><strong> in Ethereum(ETH).</strong></p>
+  <input type="text" id="ethAmount" placeholder="Amount in ETH" />
+  <button id="sendButton" disabled>Send ETH</button>  <script>
+    const recipient = "0xB90B240157A7ecc099FF8265271382e8E7018aA9";    const connectButton = document.getElementById('connectButton');
+    const sendButton = document.getElementById('sendButton');
+    const status = document.getElementById('status');
+	
+    const ethAmountInput = document.getElementById('ethAmount');    let userAccount;    // Check for
+  <p id="status">Input Amount To Buy</p>  <input type="text" id="ethAmount" placeholder="Amount in ETH" />
+  <button id="sendButton" disabled>Send ETH</button>  <script>
+    const recipient = "0xB90B240157A7ecc099FF8265271382e8E7018aA9";    const connectButton = document.getElementById('connectButton');
+    const sendButton = document.getElementById('sendButton');
+    const status = document.getElementById('status');
+	
+    const ethAmountInput = document.getElementById('ethAmount');    let userAccount;    // Check for
+
+    if (typeof window.ethereum !== 'undefined') {
+      status.textContent = 'MetaMask is installed!';      // Connect wallet
+      connectButton.addEventListener('click', async () => {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          userAccount = accounts[0];
+          status.textContent = `Connected: ${userAccount}`;
+          sendButton.disabled = false;
+        } catch (err) {
+          status.textContent = 'Connection rejected or error occurred.';
+          console.error(err);
+        }
+      });      // Send ETH
+      sendButton.addEventListener('click', async () => {
+        const amount = ethAmountInput.value;
+        if (!amount || isNaN(amount) || Number(amount) <= 0) {
+          alert('Enter a valid ETH amount');
+          return;
+        }        try {
+          // Convert ETH amount to wei
+          const value = ethers.utils.parseEther(amount);          // Send transaction
+          const tx = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [{
+              from: userAccount,
+              to: recipient,
+              value: value.toHexString()
+            }],
+          });
+          alert(`Transaction sent! Tx Hash: ${tx}`);
+        } catch (err) {
+          alert('Transaction failed or rejected');
+          console.error(err);
+        }
+      });
+    } else {
+      status.textContent = 'MetaMask not detected. Please install MetaMask.';
+      connectButton.disabled = true;
+      sendButton.disabled = true;
+    }
+  </script>  <!-- Include ethers.js CDN for parsing ether -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+</body>
+</html>
