@@ -11,6 +11,30 @@
 <button id="connectButton"><strong>Connect</strong> <strong>Wallet</strong></button>
   <p id="status"><img src="file:///C|/Users/CHOLO/Documents/linux/FreyaOSIcons/iconFreyaOS (1) (1).png" width="100" height="100" alt=""/></p>
 <p><strong>Input Amount To Buy</strong></p>
+	<button id="connectButton">Connect Wallet</button>
+<p id="status">Not connected</p>
+
+<script type="module">
+    const connectButton = document.getElementById("connectButton");
+    const statusText = document.getElementById("status");
+
+    connectButton.addEventListener("click", async () => {
+        if (typeof window.ethereum !== "undefined") {
+            try {
+                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                const account = accounts[0];
+                console.log("Connected to MetaMask:", account);
+                statusText.textContent = `Connected: ${account}`;
+            } catch (err) {
+                console.error("User rejected connection", err);
+                statusText.textContent = "Connection request rejected.";
+            }
+        } else {
+            console.log("MetaMask not installed");
+            statusText.textContent = "Please install MetaMask to connect.";
+        }
+    });
+</script>
 <p><strong>(FRRCETH,FRRCETH2,PANDORAETH)</strong></p>
 <p><strong> in Ethereum(ETH).</strong></p>
   <input type="text" id="ethAmount" placeholder="Amount in ETH" />
@@ -71,4 +95,5 @@
   </script>  <!-- Include ethers.js CDN for parsing ether -->
   <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
 </body>
+
 </html>
