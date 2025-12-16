@@ -15,7 +15,62 @@
 
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="tooplate-style.css">
-    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XR31TKHP5S', {
+    anonymize_ip: true
+  });
+
+  /* =========================
+     CUSTOM EVENT FUNCTIONS
+     ========================= */
+
+  // Track generic button clicks
+  function trackButtonClick(label) {
+    gtag('event', 'button_click', {
+      event_category: 'engagement',
+      event_label: label
+    });
+  }
+
+  // Track external links (Uniswap, X, GitHub, etc.)
+  function trackExternalLink(url, label) {
+    gtag('event', 'external_link_click', {
+      event_category: 'outbound',
+      event_label: label,
+      link_url: url
+    });
+  }
+
+  // Track token buy clicks (conversion)
+  function trackTokenBuy() {
+    gtag('event', 'buy_token', {
+      event_category: 'conversion',
+      event_label: 'Freyarockets Token Buy'
+    });
+  }
+
+  // Track wallet connect clicks
+  function trackWalletConnect(wallet) {
+    gtag('event', 'wallet_connect', {
+      event_category: 'conversion',
+      event_label: wallet
+    });
+  }
+
+  // Track whitepaper downloads
+  function trackWhitepaperDownload() {
+    gtag('event', 'whitepaper_download', {
+      event_category: 'engagement',
+      event_label: 'Whitepaper PDF'
+    });
+  }
+</script>
   </head>
   <body>
 
@@ -416,6 +471,7 @@
 
   </body>
 </html>
+
 
 
 
