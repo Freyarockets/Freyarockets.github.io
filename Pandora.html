@@ -1,6 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XR31TKHP5S', {
+    anonymize_ip: true
+  });
+
+  /* =========================
+     CUSTOM EVENT FUNCTIONS
+     ========================= */
+
+  // Track generic button clicks
+  function trackButtonClick(label) {
+    gtag('event', 'button_click', {
+      event_category: 'engagement',
+      event_label: label
+    });
+  }
+
+  // Track external links (Uniswap, X, GitHub, etc.)
+  function trackExternalLink(url, label) {
+    gtag('event', 'external_link_click', {
+      event_category: 'outbound',
+      event_label: label,
+      link_url: url
+    });
+  }
+
+  // Track token buy clicks (conversion)
+  function trackTokenBuy() {
+    gtag('event', 'buy_token', {
+      event_category: 'conversion',
+      event_label: 'Freyarockets Token Buy'
+    });
+  }
+
+  // Track wallet connect clicks
+  function trackWalletConnect(wallet) {
+    gtag('event', 'wallet_connect', {
+      event_category: 'conversion',
+      event_label: wallet
+    });
+  }
+
+  // Track whitepaper downloads
+  function trackWhitepaperDownload() {
+    gtag('event', 'whitepaper_download', {
+      event_category: 'engagement',
+      event_label: 'Whitepaper PDF'
+    });
+  }
+</script>
 		<meta charset="utf-8">
 	
 		<title>Pandora Insurance Premiums</title>
@@ -174,6 +230,44 @@ covering risks such as theft,smart contract failure or business related losses.<
 									0xA8Db09AAc170223dB3Eed0A8B2C925a07F9dFB5A
 								
 								</p>
+									<!-- Smart Buy Button -->
+<a id="buyTokenButton"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   onclick="trackTokenBuy(); trackExternalLink(this.href, 'Smart Buy Button');"
+   style="
+     display:inline-block;
+     padding:15px 28px;
+     background:linear-gradient(135deg,#ff007a,#ff6a00);
+     color:#fff;
+     border-radius:12px;
+     font-weight:bold;
+     text-decoration:none;
+     font-family: Arial, sans-serif;
+   ">
+   🚀 Buy Pandora Token
+</a>
+
+<script>
+  // Your token contract
+  const tokenAddress = '0xB90B240157A7ecc099FF8265271382e8E7018aA9';
+
+  // Normal Uniswap link
+  const uniswapLink = `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // MetaMask deep link
+  const metamaskLink = `https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // Detect mobile vs desktop
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  }
+
+  // Update button link automatically
+  const buyButton = document.getElementById('buyTokenButton');
+  buyButton.href = isMobile() ? metamaskLink : uniswapLink;
+</script>
     							</div>
     					</div>
     				</div>
@@ -199,6 +293,46 @@ covering risks such as theft,smart contract failure or business related losses.<
 					Send Etherem Here.
 					Token Address Pandora 0xB90B240157A7ecc099FF8265271382e8E7018aA9</p>
     							</div>
+<!-- Smart Buy Button -->
+<a id="buyTokenButton"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   onclick="trackTokenBuy(); trackExternalLink(this.href, 'Smart Buy Button');"
+   style="
+     display:inline-block;
+     padding:15px 28px;
+     background:linear-gradient(135deg,#ff007a,#ff6a00);
+     color:#fff;
+     border-radius:12px;
+     font-weight:bold;
+     text-decoration:none;
+     font-family: Arial, sans-serif;
+   ">
+   🚀 Buy New Token
+</a>
+
+<script>
+  // Your token contract
+  const tokenAddress = '0xB90B240157A7ecc099FF8265271382e8E7018aA9';
+
+  // Normal Uniswap link
+  const uniswapLink = `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // MetaMask deep link
+  const metamaskLink = `https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // Detect mobile vs desktop
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  }
+
+  // Update button link automatically
+  const buyButton = document.getElementById('buyTokenButton');
+  buyButton.href = isMobile() ? metamaskLink : uniswapLink;
+</script>
+
+							
     					</div>
     				</div>
     				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="1.6s">
@@ -209,6 +343,7 @@ covering risks such as theft,smart contract failure or business related losses.<
     								<span>Policy outline.</span>
     								<p>A crypto blockchain will be used to record and verify our premiums.</p>
     							</div>
+							
     					</div>
     				</div>
     			</div>
@@ -261,8 +396,46 @@ covering risks such as theft,smart contract failure or business related losses.<
 					Insures your business against fire and theft.
 					Send Etherem Here.
 					Token Address Pandora 0xB90B240157A7ecc099FF8265271382e8E7018aA9
-					</p>
-                                    <a href="#" class="btn btn-default">Buy</a>
+									</p>
+									<!-- Smart Buy Button -->
+<a id="buyTokenButton"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   onclick="trackTokenBuy(); trackExternalLink(this.href, 'Smart Buy Button');"
+   style="
+     display:inline-block;
+     padding:15px 28px;
+     background:linear-gradient(135deg,#ff007a,#ff6a00);
+     color:#fff;
+     border-radius:12px;
+     font-weight:bold;
+     text-decoration:none;
+     font-family: Arial, sans-serif;
+   ">
+   🚀 Buy Pandora Token
+</a>
+
+<script>
+  // Your token contract
+  const tokenAddress = '0xB90B240157A7ecc099FF8265271382e8E7018aA9';
+
+  // Normal Uniswap link
+  const uniswapLink = `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // MetaMask deep link
+  const metamaskLink = `https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // Detect mobile vs desktop
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  }
+
+  // Update button link automatically
+  const buyButton = document.getElementById('buyTokenButton');
+  buyButton.href = isMobile() ? metamaskLink : uniswapLink;
+</script>
+                                
                                 </div>
                         </div>
     				</div>
@@ -276,7 +449,44 @@ covering risks such as theft,smart contract failure or business related losses.<
 					Send Etherem Here.
 					Token Address Pandora 0xB90B240157A7ecc099FF8265271382e8E7018aA9
 </p>
-                                    <a href="#" class="btn btn-default">Buy</a>
+                                    <!-- Smart Buy Button -->
+<a id="buyTokenButton"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   onclick="trackTokenBuy(); trackExternalLink(this.href, 'Smart Buy Button');"
+   style="
+     display:inline-block;
+     padding:15px 28px;
+     background:linear-gradient(135deg,#ff007a,#ff6a00);
+     color:#fff;
+     border-radius:12px;
+     font-weight:bold;
+     text-decoration:none;
+     font-family: Arial, sans-serif;
+   ">
+   🚀 Buy New Token
+</a>
+
+<script>
+  // Your token contract
+  const tokenAddress = '0xB90B240157A7ecc099FF8265271382e8E7018aA9';
+
+  // Normal Uniswap link
+  const uniswapLink = `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // MetaMask deep link
+  const metamaskLink = `https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${tokenAddress}`;
+
+  // Detect mobile vs desktop
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  }
+
+  // Update button link automatically
+  const buyButton = document.getElementById('buyTokenButton');
+  buyButton.href = isMobile() ? metamaskLink : uniswapLink;
+</script>
                                 </div>
                         </div>
                     </div>
@@ -291,6 +501,8 @@ covering risks such as theft,smart contract failure or business related losses.<
 					</p>
                                     <a href="#" class="btn btn-default">Buy</a>
                                 </div>
+
+							
                         </div>
                     </div>
                   
@@ -367,3 +579,4 @@ covering risks such as theft,smart contract failure or business related losses.<
 
 	</body>
 </html>
+
