@@ -1,0 +1,25 @@
+extends Node
+
+func _ready():
+    # Example: You can call this function from a signal, e.g., _on_button_pressed()
+    pass
+
+# A function that attempts to open all three links
+func open_all_links():
+    var urls = [
+        "https://Freyarockets.github.io",
+        "https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xE3240d094fe549E365033688c9DeBe645bA44db6&exactAmount=0.1",
+        "https://pancakeswap.finance/swap?inputCurrency=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&outputCurrency=0x55f4c8abA71A1e923edC303eb4fEfF14608cC226&exactAmount=0.1"
+    ]
+
+    for url in urls:
+        var error = OS.shell_open(url)
+        if error != OK:
+            print("Failed to open URL: ", url, " Error code: ", error)
+        else:
+            print("Attempting to open: ", url)
+
+# --- Example of how to connect this to a Button in your UI ---
+func _on_OpenLinksButton_pressed():
+    open_all_links()
+
