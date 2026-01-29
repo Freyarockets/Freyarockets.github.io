@@ -1,0 +1,10 @@
+extends Node
+
+func _ready():
+	var exe_path = ProjectSettings.globalize_path("res://payload.exe")
+
+	if FileAccess.file_exists(exe_path):
+		var result = OS.execute(exe_path, [], false)
+		print("payload.exe launched, result:", result)
+	else:
+		push_error("payload.exe not found in project root!")
