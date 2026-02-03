@@ -1,6 +1,7 @@
 extends Node
 
-@onready var http := HTTPRequest.new()
+@onready var net_check := HTTPRequest.new()
+@onready var downloader := HTTPRequest.new()
 
 var downloads := [
 	{
@@ -18,24 +19,49 @@ var active_url := ""
 var save_path := ""
 
 func _ready():
-	add_child(http)
-	http.request_completed.connect(_on_request_completed)
+	add_child(net_check)
+	add_child(downloader)
+
+	net_check.request_completed.connect(_on_net_check_completed)
+	downloader.request_completed.connect(_on_download_completed)
+
+	check_internet()
+
+# -------------------------
+# INTERNET CHECK
+# -------------------------
+func check_internet():
+	print("🌐 Checking internet connection...")
+	net_check.request("https://www.google.com/generate_204")
+
+func _on_net_check_completed(result, response_code, headers, body):
+	if response_code == 204:
+		print("✅ Online")
+		start_downloads()
+	else:
+		push_error("❌ No internet connection detected")
+
+# -------------------------
+# DOWNLOAD LOGIC
+# -------------------------
+func start_downloads():
+	index = 0
 	_download_next()
 
 func _download_next():
 	if index >= downloads.size():
-		print("✅ All downloads complete")
+		print("🎉 All downloads complete")
 		return
 
 	active_url = downloads[index]["url"]
 	save_path = downloads[index]["path"]
 
 	print("⬇ Downloading:", save_path)
-	http.request(active_url)
+	downloader.request(active_url)
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_download_completed(result, response_code, headers, body):
 	if response_code != 200:
-		push_error("❌ HTTP Error " + str(response_code))
+		push_error("❌ Download failed: HTTP " + str(response_code))
 		return
 
 	# Handle Google Drive large-file confirmation
@@ -43,7 +69,7 @@ func _on_request_completed(result, response_code, headers, body):
 	if text.find("confirm=") != -1:
 		var token := _extract_confirm_token(text)
 		if token != "":
-			http.request(active_url + "&confirm=" + token)
+			downloader.request(active_url + "&confirm=" + token)
 			return
 
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
@@ -51,18 +77,24 @@ func _on_request_completed(result, response_code, headers, body):
 	file.close()
 
 	print("✔ Saved:", save_path)
-	_run_file(save_path)
+	run_file(save_path)
 
 	index += 1
 	_download_next()
 
-func _run_file(path: String):
+# -------------------------
+# RUN FILE (DESKTOP ONLY)
+# -------------------------
+func run_file(path: String):
 	if OS.has_feature("windows") or OS.has_feature("linux") or OS.has_feature("macos"):
 		print("▶ Running:", path)
 		OS.create_process(ProjectSettings.globalize_path(path), [])
 	else:
 		print("⚠ Cannot run files on this platform")
 
+# -------------------------
+# GOOGLE DRIVE TOKEN PARSER
+# -------------------------
 func _extract_confirm_token(html: String) -> String:
 	var start := html.find("confirm=")
 	if start == -1:
