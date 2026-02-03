@@ -82,6 +82,26 @@
   </head>
   <body>
 
+    
+    <h4>3D Printer Checkout</h4>
+    <button id="buyButton">Buy Printer with Tokens</button>
+
+    <script type="module">
+        import { executePurchase } from './purchase.js';
+
+        document.getElementById('buyButton').addEventListener('click', async () => {
+            const merchant = "0xB90B240157A7ecc099FF8265271382e8E7018aA9"; // CHANGE THIS
+            const price = "499.0"; // The cost in tokens
+
+            const result = await executePurchase(merchant, price);
+            if (result) {
+                alert("Order Placed Successfully!");
+            }
+        });
+    </script>
+</html>
+
+
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
@@ -504,6 +524,7 @@
 
   </body>
 </html>
+
 
 
 
