@@ -345,7 +345,109 @@
                             <div class="timeline-info">
                                 <h3><span>Freya OS Now available for download. </h3>
                                 <p>
-                                  
+                                  <style>
+.download-container {
+  text-align: center;
+  margin-top: 60px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.game-btn {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px 45px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(6px);
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  box-shadow: 
+      0 0 15px rgba(0, 255, 255, 0.4),
+      0 8px 25px rgba(0,0,0,0.6);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      rgba(255,255,255,0.1),
+      rgba(255,255,255,0.4),
+      rgba(255,255,255,0.1)
+  );
+  transform: skewX(-25deg);
+  transition: 0.5s;
+}
+
+.game-btn:hover::before {
+  left: 130%;
+}
+
+.game-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+      0 0 25px rgba(0, 255, 255, 0.7),
+      0 12px 30px rgba(0,0,0,0.8);
+}
+
+.game-btn:active {
+  transform: scale(0.96);
+}
+
+.spaceship {
+  box-shadow:
+      0 0 18px rgba(0, 200, 255, 0.6),
+      0 8px 25px rgba(0,0,0,0.6);
+}
+
+.release {
+  box-shadow:
+      0 0 18px rgba(255, 80, 150, 0.6),
+      0 8px 25px rgba(0,0,0,0.6);
+}
+</style>
+
+<div class="download-container">
+
+  <a class="game-btn spaceship"
+     href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
+     onclick="gtag('event','download_spaceship_os', {
+        'event_category':'download',
+        'event_label':'Spaceship OS Google Drive'
+     });">
+     🛸 DOWNLOAD SPACESHIP OS
+  </a>
+
+  <br>
+
+  <a class="game-btn release"
+     href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
+     onclick="gtag('event','download_latest_release', {
+        'event_category':'download',
+        'event_label':'2GB release'
+     });">
+     🚀 DOWNLOAD LATEST RELEASE (2GB)
+  </a>
+<a class="game-btn"
+     href="https://drive.google.com/file/d/1xdJCtrcwqhx3X-oXLIHtF1DSFGzUJg4G/view?usp=drive_link"
+     onclick="gtag('event','download_asteroid_os', {
+        'event_category':'download',
+        'event_label':'Asteroid OS Google Drive'
+     });">
+     ☄️ DOWNLOAD ASTEROID OS
+  </a>
+</div>
                                 </p>
                             </div>
                         </div>
@@ -577,6 +679,7 @@
 
   </body>
 </html>
+
 
 
 
