@@ -23,22 +23,18 @@
 
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="tooplate-style.css">
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S">
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+
   gtag('js', new Date());
 
   gtag('config', 'G-XR31TKHP5S', {
     anonymize_ip: true
   });
 
-  /* =========================
-     CUSTOM EVENT FUNCTIONS
-     ========================= */
-
-  // Track generic button clicks
   function trackButtonClick(label) {
     gtag('event', 'button_click', {
       event_category: 'engagement',
