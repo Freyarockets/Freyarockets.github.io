@@ -1,111 +1,248 @@
-
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Connect and Buy FreyaTokens</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buy Freya Tokens</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .card { max-width:800px; margin: 0 auto; padding:20px; border:1px solid #eee; border-radius:8px; }
+    label { display:block; margin-top:12px; }
+    select, input { width:100%; padding:8px; margin-top:6px; }
+    button { margin-top:12px; padding:10px 16px; }
+    .muted { color:#666; font-size:0.9em }
+    .status { margin-top:12px; padding:10px; background:#f7f7f7; border-radius:6px }
+    .row { display:flex; gap:12px } .col { flex:1 }
+  </style>
 </head>
 <body>
-  
-<p>	<strong>START HERE TO MAKE PAYMENT FOR FREYAOSTOKENS.</strong></p>
-<button id="connectButton"><strong>Connect</strong> <strong>Wallet</strong></button>
-  <p id="status"><img src="file:///C|/Users/CHOLO/Documents/linux/FreyaOSIcons/iconFreyaOS (1) (1).png" width="100" height="100" alt=""/></p>
-<p><strong>Input Amount To Buy</strong></p>
-	<button id="connectButton">Connect Wallet</button>
-<p id="status">Not connected</p>
+  <div class="card">
+    <h2>Buy Freya Tokens</h2>
+    <p class="muted">Connect your wallet, check balances, swap ETH for a token via Uniswap V2, or approve & transfer tokens to a merchant.</p>
 
-<script type="module">
-    const connectButton = document.getElementById("connectButton");
-    const statusText = document.getElementById("status");
+    <label>Wallet</label>
+    <div class="row">
+      <div class="col"><button id="connectBtn">Connect Wallet</button></div>
+      <div class="col"><div id="account" class="muted">Not connected</div></div>
+    </div>
 
-    connectButton.addEventListener("click", async () => {
-        if (typeof window.ethereum !== "undefined") {
-            try {
-                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-                const account = accounts[0];
-                console.log("Connected to MetaMask:", account);
-                statusText.textContent = `Connected: ${account}`;
-            } catch (err) {
-                console.error("User rejected connection", err);
-                statusText.textContent = "Connection request rejected.";
-            }
-        } else {
-            console.log("MetaMask not installed");
-            statusText.textContent = "Please install MetaMask to connect.";
-        }
-    });
-</script>
-<p><strong>(FRRCETH,FRRCETH2,PANDORAETH)</strong></p>
-<p><strong> in Ethereum(ETH).</strong></p>
-  <input type="text" id="ethAmount" placeholder="Amount in ETH" />
-  <button id="sendButton" disabled>Send ETH</button>  <script>
-    const recipient = "0xB90B240157A7ecc099FF8265271382e8E7018aA9";    const connectButton = document.getElementById('connectButton');
-    const sendButton = document.getElementById('sendButton');
-    const status = document.getElementById('status');
-	
-    const ethAmountInput = document.getElementById('ethAmount');    let userAccount;    // Check for
-  <p id="status">Input Amount To Buy</p>  <input type="text" id="ethAmount" placeholder="Amount in ETH" />
-  <button id="sendButton" disabled>Send ETH</button>  <script>
-    const recipient = "0xB90B240157A7ecc099FF8265271382e8E7018aA9";    const connectButton = document.getElementById('connectButton');
-    const sendButton = document.getElementById('sendButton');
-    const status = document.getElementById('status');
-	
-    const ethAmountInput = document.getElementById('ethAmount');    let userAccount;    // Check for
+    <label>Network</label>
+    <div id="network" class="muted">-</div>
 
-    if (typeof window.ethereum !== 'undefined') {
-      status.textContent = 'MetaMask is installed!';      // Connect wallet
-      connectButton.addEventListener('click', async () => {
-        try {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          userAccount = accounts[0];
-          status.textContent = `Connected: ${userAccount}`;
-          sendButton.disabled = false;
-        } catch (err) {
-          status.textContent = 'Connection rejected or error occurred.';
-          console.error(err);
-        }
-      });      // Send ETH
-      sendButton.addEventListener('click', async () => {
-        const amount = ethAmountInput.value;
-        if (!amount || isNaN(amount) || Number(amount) <= 0) {
-          alert('Enter a valid ETH amount');
-          return;
-        }        try {
-          // Convert ETH amount to wei
-          const value = ethers.utils.parseEther(amount);          // Send transaction
-          const tx = await window.ethereum.request({
-            method: 'eth_sendTransaction',
-            params: [{
-              from: userAccount,
-              to: recipient,
-              value: value.toHexString()
-            }],
-          });
-          alert(`Transaction sent! Tx Hash: ${tx}`);
-        } catch (err) {
-          alert('Transaction failed or rejected');
-          console.error(err);
-        }
-      });
-    } else {
-      status.textContent = 'MetaMask not detected. Please install MetaMask.';
-      connectButton.disabled = true;
-      sendButton.disabled = true;
-    }
-	
+    <label>ETH Balance</label>
+    <div id="ethBalance" class="muted">-</div>
 
-	  <img
-  src="Screenshot_20250809-020803.jpg"
-  alt="QR scanner device"
-  width="600"
-  height="400"
-  loading="lazy"
-  decoding="async"
-/>
-  </script>  <!-- Include ethers.js CDN for parsing ether -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+    <label>Token</label>
+    <select id="tokenSelect"></select>
+    <div id="tokenInfo" class="muted">Select a token to see balance and details</div>
+
+    <label>Token Balance</label>
+    <div id="tokenBalance" class="muted">-</div>
+
+    <label>Buy (swap) ETH amount</label>
+    <input id="ethAmount" type="text" placeholder="Amount in ETH (e.g. 0.1)">
+
+    <label>Slippage tolerance (%)</label>
+    <input id="slippage" type="text" value="1">
+
+    <div class="row">
+      <div class="col"><button id="buyBtn">Buy (Swap via UniswapV2)</button></div>
+      <div class="col"><button id="refreshBtn">Refresh Balances</button></div>
+    </div>
+
+    <hr>
+    <h3>Approve & Transfer (optional)</h3>
+    <label>Merchant / Recipient address</label>
+    <input id="merchant" type="text" placeholder="0x..." value="0xE3240d094fe549E365033688c9DeBe645bA44db6">
+
+    <label>Amount of tokens to send (in token units)</label>
+    <input id="tokenSendAmount" type="text" placeholder="Amount (e.g. 1000)">
+
+    <div class="row">
+      <div class="col"><button id="approveBtn">Approve Merchant</button></div>
+      <div class="col"><button id="transferBtn">Transfer Tokens to Merchant</button></div>
+    </div>
+
+    <div id="statusBox" class="status">Status messages will appear here.</div>
+  </div>
+
+  <!-- Ethers.js v5 -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <script>
+    (async function(){
+      // Config
+      const UNISWAP_ROUTER = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'; // Uniswap V2 Router
+      const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // Mainnet WETH
+
+      // Token list (from repository)
+      const TOKENS = [
+        { name: 'FREYA1', address: '0xE3240d094fe549E365033688c9DeBe645bA44db6' },
+        { name: 'FREYA2', address: '0xB90B240157A7ecc099FF8265271382e8E7018aA9' },
+        { name: 'FRRC_3', address: '0xb331a42646807f78b16eba54858f3FcFC0d52b5C' },
+        { name: 'FRRC_4', address: '0xc128052d1C0E0CB95dFa8b39Bc5e89a999eC7d71' },
+        { name: 'FRRC_5', address: '0xC3f0f1275AC5CDea5EB3Fe98AA6c790dfad70717' }
+      ];
+
+      // Minimal ABIs
+      const ERC20 = [
+        'function name() view returns (string)',
+        'function symbol() view returns (string)',
+        'function decimals() view returns (uint8)',
+        'function balanceOf(address) view returns (uint256)',
+        'function approve(address spender, uint256 amount) returns (bool)',
+        'function allowance(address owner, address spender) view returns (uint256)',
+        'function transfer(address to, uint256 amount) returns (bool)'
+      ];
+
+      const ROUTER = [
+        'function getAmountsOut(uint amountIn, address[] memory path) view returns (uint[] memory amounts)',
+        'function swapExactETHForTokensSupportingFeeOnTransferTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) payable'
+      ];
+
+      // UI elements
+      const connectBtn = document.getElementById('connectBtn');
+      const accountDiv = document.getElementById('account');
+      const networkDiv = document.getElementById('network');
+      const ethBalanceDiv = document.getElementById('ethBalance');
+      const tokenSelect = document.getElementById('tokenSelect');
+      const tokenInfo = document.getElementById('tokenInfo');
+      const tokenBalanceDiv = document.getElementById('tokenBalance');
+      const ethAmountInput = document.getElementById('ethAmount');
+      const slippageInput = document.getElementById('slippage');
+      const buyBtn = document.getElementById('buyBtn');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const statusBox = document.getElementById('statusBox');
+      const approveBtn = document.getElementById('approveBtn');
+      const transferBtn = document.getElementById('transferBtn');
+      const merchantInput = document.getElementById('merchant');
+      const tokenSendAmountInput = document.getElementById('tokenSendAmount');
+
+      let provider, signer, userAddress;
+
+      function setStatus(msg){ statusBox.innerText = msg; console.log(msg); }
+
+      function toBN(v){ return ethers.BigNumber.from(v); }
+
+      // Populate token selector
+      TOKENS.forEach(t => {
+        const opt = document.createElement('option'); opt.value = t.address; opt.text = `${t.name} — ${t.address}`; tokenSelect.appendChild(opt);
+      });
+
+      async function connectWallet(){
+        if(!window.ethereum) { setStatus('MetaMask not detected'); return; }
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send('eth_requestAccounts', []);
+        signer = provider.getSigner();
+        userAddress = await signer.getAddress();
+        accountDiv.innerText = `${userAddress}`;
+        const network = await provider.getNetwork();
+        networkDiv.innerText = `${network.name} (chainId: ${network.chainId})`;
+        await refreshBalances();
+        setStatus('Connected');
+      }
+
+      async function refreshBalances(){
+        if(!provider) { setStatus('Connect wallet first'); return; }
+        const bal = await provider.getBalance(userAddress);
+        ethBalanceDiv.innerText = `${ethers.utils.formatEther(bal)} ETH`;
+        await updateTokenInfo();
+      }
+
+      async function updateTokenInfo(){
+        const tokenAddress = tokenSelect.value;
+        if(!tokenAddress) return;
+        const token = new ethers.Contract(tokenAddress, ERC20, provider);
+        let sym = 'UNKNOWN'; let dec = 18; let name = '';
+        try{ sym = await token.symbol(); } catch(e){}
+        try{ dec = await token.decimals(); } catch(e){}
+        try{ name = await token.name(); } catch(e){}
+        tokenInfo.innerText = `${name || 'N/A'} (${sym}) — decimals: ${dec}`;
+        try{
+          const bal = await token.balanceOf(userAddress);
+          const formatted = ethers.utils.formatUnits(bal, dec);
+          tokenBalanceDiv.innerText = `${formatted} ${sym}`;
+        } catch(e){ tokenBalanceDiv.innerText = '—'; }
+      }
+
+      tokenSelect.addEventListener('change', updateTokenInfo);
+
+      connectBtn.addEventListener('click', connectWallet);
+      refreshBtn.addEventListener('click', refreshBalances);
+
+      // Buy (swap) via Uniswap V2 router
+      buyBtn.addEventListener('click', async ()=>{
+        if(!signer) { setStatus('Connect wallet first'); return; }
+        const ethAmount = ethAmountInput.value.trim();
+        if(!ethAmount || isNaN(ethAmount) || Number(ethAmount) <= 0){ alert('Enter valid ETH amount'); return; }
+        const slippagePct = Number(slippageInput.value) || 1;
+        const tokenAddr = tokenSelect.value;
+        setStatus('Preparing swap...');
+        const router = new ethers.Contract(UNISWAP_ROUTER, ROUTER, signer);
+        const amountIn = ethers.utils.parseEther(ethAmount);
+        const path = [WETH, tokenAddr];
+        try{
+          // get amounts out (estimate)
+          const amounts = await router.getAmountsOut(amountIn, path);
+          const estimatedOut = amounts[1];
+          const slippageFactor = 100 - slippagePct;
+          const amountOutMin = estimatedOut.mul(slippageFactor).div(100);
+          const deadline = Math.floor(Date.now()/1000) + 60*10; // 10 minutes
+          setStatus(`Swapping ${ethAmount} ETH for minimum ${ethers.utils.formatUnits(amountOutMin, 0)} tokens (raw units)`);
+          const tx = await router.swapExactETHForTokensSupportingFeeOnTransferTokens(
+            amountOutMin,
+            path,
+            userAddress,
+            deadline,
+            { value: amountIn, gasLimit: 700000 }
+          );
+          setStatus(`Swap submitted. TxHash: ${tx.hash}`);
+          await tx.wait();
+          setStatus(`Swap confirmed: ${tx.hash}`);
+          await refreshBalances();
+        }catch(err){ console.error(err); setStatus('Swap failed: ' + (err && err.message ? err.message : String(err))); }
+      });
+
+      // Approve merchant to spend tokens
+      approveBtn.addEventListener('click', async ()=>{
+        if(!signer){ setStatus('Connect wallet first'); return; }
+        const tokenAddr = tokenSelect.value; const merchant = merchantInput.value.trim();
+        if(!ethers.utils.isAddress(merchant)){ alert('Invalid merchant address'); return; }
+        const token = new ethers.Contract(tokenAddr, ERC20, signer);
+        try{
+          // Approve a large amount (be careful) — here we approve max uint
+          const max = ethers.constants.MaxUint256;
+          const tx = await token.approve(merchant, max);
+          setStatus(`Approve tx sent: ${tx.hash}`);
+          await tx.wait();
+          setStatus('Approve confirmed');
+        }catch(err){ console.error(err); setStatus('Approve failed: ' + err.message); }
+      });
+
+      // Transfer tokens to merchant (direct transfer from wallet)
+      transferBtn.addEventListener('click', async ()=>{
+        if(!signer){ setStatus('Connect wallet first'); return; }
+        const tokenAddr = tokenSelect.value; const merchant = merchantInput.value.trim();
+        const amountStr = tokenSendAmountInput.value.trim();
+        if(!ethers.utils.isAddress(merchant)){ alert('Invalid merchant address'); return; }
+        if(!amountStr || isNaN(amountStr) || Number(amountStr) <= 0){ alert('Enter valid token amount'); return; }
+        const token = new ethers.Contract(tokenAddr, ERC20, signer);
+        try{
+          const dec = await token.decimals();
+          const amount = ethers.utils.parseUnits(amountStr, dec);
+          const tx = await token.transfer(merchant, amount);
+          setStatus(`Transfer tx sent: ${tx.hash}`);
+          await tx.wait();
+          setStatus('Transfer confirmed');
+          await refreshBalances();
+        }catch(err){ console.error(err); setStatus('Transfer failed: ' + (err && err.message ? err.message : String(err))); }
+      });
+
+      // Auto-read merchant and price from query params (when navigated from index)
+      function readParams(){ const params = new URLSearchParams(window.location.search); const m = params.get('merchant'); const p = params.get('price'); if(m && ethers.utils.isAddress(m)) merchantInput.value = m; if(p) ethAmountInput.value = p; }
+      readParams();
+
+      setStatus('Ready');
+    })();
+  </script>
 </body>
-
 </html>
-
-
