@@ -1,0 +1,1 @@
+web: gunicorn stardust_avatar.app:app --log-file -
