@@ -74,6 +74,15 @@
       event_label: 'Whitepaper PDF'
     });
   }
+
+  // Track StarDust OS downloads (unified event)
+  function trackStardustDownload() {
+    gtag('event', 'download_stardust_os', {
+      event_category: 'download',
+      event_label: 'Stardust OS Google Drive',
+      event_value: 1
+    });
+  }
 </script>
   </head>
   <body>
@@ -156,7 +165,7 @@
                                 </div>
                         </h1>
 
-                        <p>Freya is an integrated satellite deployment system. It is primarily funded in ETH(ethereum) using investor pooling and voting process in the design,planning and deployment process.
+                        <p>Freya is an integrated satellite deployment system. It is primarily funded in ETH(ethereum) using investor pooling and voting process in the design,planning and deployment p[...]
                           Construction of components is done through building warehouses and then integrating the components from the warehouses in a single location.
                           The complete rocket will be launched from a sea oil rig. A smart contract will be utilised to fund the project. This contract is ETH based. 
                           Models will be readily available on the site for warehouses, engines, rocket casings etc.
@@ -206,7 +215,7 @@
                           <button onclick="trackWalletConnect('MetaMask'); return false;">
   Connect Wallet
 </button>
-                   <style>
+                    <style>
 
 .download-btn{
   background: linear-gradient(135deg,#0066ff,#00c6ff);
@@ -317,15 +326,15 @@ onclick="gtag('event','download_model',{
                                   <span>An Ethereum funded rocket prototype.</span>
                              </div>
                              <div class="timeline-info">
-                                  <h3><span>Rocket Engine</span><small>Development.</small></h3>
-                                  <p>The rocket Engine was designed in Sketchup. It will be simulated with improved design specification and rigorous testing.
-                                    Test enviroments will be deployed so as to increase productivity and shorten prototype to product realisation times.
-                                    The 3D model of the rocket will be available on the site.
-                                    <a href = "Freya 3D Rocket Engine Model.rar">Click here to download Freya Rocket Models.</a>
-                                    <a href = "https://getintopc.com/softwares/3d-cad/autodesk-autocad-2024-free-download-1112573/">Click here to download Rocket modelling 3D software</a>
-                                    We've introduced our first stage model for craft and 3D print using a printer. Download the model
-                                    in 3D stl format.
-                                    <style>
+                                   <h3><span>Rocket Engine</span><small>Development.</small></h3>
+                                   <p>The rocket Engine was designed in Sketchup. It will be simulated with improved design specification and rigorous testing.
+                                     Test enviroments will be deployed so as to increase productivity and shorten prototype to product realisation times.
+                                     The 3D model of the rocket will be available on the site.
+                                     <a href = "Freya 3D Rocket Engine Model.rar">Click here to download Freya Rocket Models.</a>
+                                     <a href = "https://getintopc.com/softwares/3d-cad/autodesk-autocad-2024-free-download-1112573/">Click here to download Rocket modelling 3D software</a>
+                                     We've introduced our first stage model for craft and 3D print using a printer. Download the model
+                                     in 3D stl format.
+                                     <style>
 
 .download-btn{
   background: linear-gradient(135deg,#0066ff,#00c6ff);
@@ -360,86 +369,86 @@ onclick="gtag('event','download_model',{
 ⬇ Download First Stage Model
 
 </a>
-                                    For building and simulation of rocket prototypes.
-                                  </p>
+                                     For building and simulation of rocket prototypes.
+                                   </p>
                              </div>
                         </div>
 
                         <div class="timeline-wrapper">
-                            <div class="timeline-yr">
+                             <div class="timeline-yr">
                                 <span>Ethereum Smart Contract.</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span></span><small>Why Freya will leverage an Ethereum smart contract?</small></h3>
+                             </div>
+                             <div class="timeline-info">
+                                 <h3><span></span><small>Why Freya will leverage an Ethereum smart contract?</small></h3>
 
-                              <a href="https://app.uniswap.org"
-   target="_blank"
-   onclick="trackTokenBuy(); trackExternalLink(this.href, 'Uniswap Buy');">
-   Buy Token
+                               <a href="https://app.uniswap.org"
+    target="_blank"
+    onclick="trackTokenBuy(); trackExternalLink(this.href, 'Uniswap Buy');">
+    Buy Token
 </a>
-            <a href="https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xE3240d094fe549E365033688c9DeBe645bA44db6"
-   target="_blank"
-   rel="noopener"
-   onclick="trackTokenBuy(); trackExternalLink(this.href, 'MetaMask Deep Buy');"
-   style="
-     display:inline-block;
-     padding:15px 28px;
-     background:linear-gradient(135deg,#ff007a,#ff6a00);
-     color:#fff;
-     border-radius:12px;
-     font-weight:bold;
-     text-decoration:none;
-   ">
-   🚀 Buy Freyarockets Token 
+             <a href="https://metamask.app.link/dapp/app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xE3240d094fe549E365033688c9DeBe645bA44db6"
+    target="_blank"
+    rel="noopener"
+    onclick="trackTokenBuy(); trackExternalLink(this.href, 'MetaMask Deep Buy');"
+    style="
+      display:inline-block;
+      padding:15px 28px;
+      background:linear-gradient(135deg,#ff007a,#ff6a00);
+      color:#fff;
+      border-radius:12px;
+      font-weight:bold;
+      text-decoration:none;
+    ">
+    🚀 Buy Freyarockets Token 
 </a>                    <p>
-                                  Developing a space rocket using Ethereum, a blockchain platform primarily used for smart contracts and decentralized applications.
-                                  Here's how Ethereum could intersect Freya with rocket development:
-                                  1. Funding the Project through TokenizationInitial Coin Offering (ICO): 
-                                  Our developers will create a token on the Ethereum blockchain to fund Freya rocket project. 
-                                 First: Add the Token to MetaMask
+                                   Developing a space rocket using Ethereum, a blockchain platform primarily used for smart contracts and decentralized applications.
+                                   Here's how Ethereum could intersect Freya with rocket development:
+                                   1. Funding the Project through TokenizationInitial Coin Offering (ICO): 
+                                   Our developers will create a token on the Ethereum blockchain to fund Freya rocket project. 
+                                  First: Add the Token to MetaMask
 
-                                  
-                                  <br>
-                                  1. Open MetaMask
-                                  <br>
+                                   
+                                   <br>
+                                   1. Open MetaMask
+                                   <br>
 2. Select Ethereum Mainnet
-                                  <br>
+                                   <br>
 3. Tap Import Token
-                                  <br>
+                                   <br>
 4. Paste the contract:
 0xE3240d094fe549E365033688c9DeBe645bA44db6
-                                  <br>
+                                   <br>
 5. Confirm → Token will now appear in your wallet
-                               <a href="https://drive.google.com/drive/folders/1U8M48qk2QRJi0UTX2Yw8i8-zwAvtWxhj">
-                      Click here to Contribute via Metamask.
-                         </a>
-                                Copy the address below into metamask to interact directly with the Freya Tokens.
-                                  <br>
-                                     0xE3240d094fe549E365033688c9DeBe645bA44db6
-                  
-                               
-                                      <br>
-                               0xb331a42646807f78b16eba54858f3FcFC0d52b5C
-                             </br>
+                                <a href="https://drive.google.com/drive/folders/1U8M48qk2QRJi0UTX2Yw8i8-zwAvtWxhj">
+                       Click here to Contribute via Metamask.
+                          </a>
+                                 Copy the address below into metamask to interact directly with the Freya Tokens.
+                                   <br>
+                                      0xE3240d094fe549E365033688c9DeBe645bA44db6
+                   
+                                
                                        <br>
-                               0xc128052d1C0E0CB95dFa8b39Bc5e89a999eC7d71
-                             
-                                       <br>
-                               0xC3f0f1275AC5CDea5EB3Fe98AA6c790dfad70717
-                             
-                                   
-                                </p>
-                            </div>
-                        </div>
+                                0xb331a42646807f78b16eba54858f3FcFC0d52b5C
+                              </br>
+                                        <br>
+                                0xc128052d1C0E0CB95dFa8b39Bc5e89a999eC7d71
+                              
+                                        <br>
+                                0xC3f0f1275AC5CDea5EB3Fe98AA6c790dfad70717
+                              
+                                    
+                                 </p>
+                             </div>
+                         </div>
 
                         <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>Freya OS and SpaceshipOS</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Freya OS Now available for download. </h3>
-                                <p>
-                                   <style>
+                             <div class="timeline-yr">
+                                 <span>Freya OS and SpaceshipOS</span>
+                             </div>
+                             <div class="timeline-info">
+                                 <h3><span>Freya OS Now available for download. </h3>
+                                 <p>
+                                    <style>
 .download-container {
   text-align: center;
   margin-top: 60px;
@@ -512,53 +521,47 @@ onclick="gtag('event','download_model',{
 }
 </style>
 
-  <a class="game-btn spaceship"
-     href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
-     onclick="gtag('event','download_spaceship_os', {
-        'event_category':'download',
-        'event_label':'Spaceship OS Google Drive'
-     });">
-     🛸 DOWNLOAD SPACESHIP OS
-  </a>
+   <a class="game-btn spaceship"
+      href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
+      onclick="gtag('event','download_spaceship_os', {
+         'event_category':'download',
+         'event_label':'Spaceship OS Google Drive'
+      });">
+      🛸 DOWNLOAD SPACESHIP OS
+   </a>
 
-  <br>
+   <br>
 
-  <a class="game-btn release"
-     href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
-     onclick="gtag('event','download_latest_release', {
-        'event_category':'download',
-        'event_label':'2GB release'
-     });">
-     🚀 DOWNLOAD LATEST RELEASE (2GB)
-  </a>
+   <a class="game-btn release"
+      href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
+      onclick="gtag('event','download_latest_release', {
+         'event_category':'download',
+         'event_label':'2GB release'
+      });">
+      🚀 DOWNLOAD LATEST RELEASE (2GB)
+   </a>
 <a class="game-btn"
-     href="https://drive.google.com/file/d/1xdJCtrcwqhx3X-oXLIHtF1DSFGzUJg4G/view?usp=drive_link"
-     onclick="gtag('event','download_asteroid_os', {
-        'event_category':'download',
-        'event_label':'Asteroid OS Google Drive'
-     });">
-     ☄️ DOWNLOAD ASTEROID OS
-  </a>
-                                  <p>
-                                    Stardust OS is an AI powered OS now available for download
-                                    Just plug and play 🎮 🕹️ 🎮.
-                                  </p>
-                 <a class="game-btn spaceship"
-     href="https://drive.google.com/file/d/1dYxKR-wbLobHPLmO6vHf6Jh5kbDa4sDd/view?usp=drivesdk"
-     onclick="gtag('event','download_stardust_os', {
-        'event_category':'download',
-        'event_label':'Stardust OS Google Drive'
-     });">
-     🚀 DOWNLOAD STARDUST OS
-  </a>
-                              <p>
-                                Star Dust Os is an AI powered OS now available for download.It is convenient for your needs.
+      href="https://drive.google.com/file/d/1xdJCtrcwqhx3X-oXLIHtF1DSFGzUJg4G/view?usp=drive_link"
+      onclick="gtag('event','download_asteroid_os', {
+         'event_category':'download',
+         'event_label':'Asteroid OS Google Drive'
+      });">
+      ☄️ DOWNLOAD ASTEROID OS
+   </a>
+                                   <p>
+                                     Stardust OS is an AI powered OS now available for download
+                                     Just plug and play 🎮 🕹️ 🎮.
+                                   </p>
+                  <a class="game-btn spaceship"
+      href="https://drive.google.com/file/d/1dYxKR-wbLobHPLmO6vHf6Jh5kbDa4sDd/view?usp=drivesdk"
+      onclick="trackStardustDownload();">
+      🚀 DOWNLOAD STARDUST OS
+   </a>
+                               <p>
+                                 Star Dust Os is an AI powered OS now available for download.It is convenient for your needs.
 <a href="https://drive.google.com/file/d/1dYxKR-wbLobHPLmO6vHf6Jh5kbDa4sDd/view?usp=drivesdk"
    target="_blank"
-   onclick="gtag('event', 'download', {
-       event_category: 'Stardust OS',
-       event_label: 'Google Drive Download'
-   });"
+   onclick="trackStardustDownload();"
    style="
       display:inline-block;
       padding:16px 32px;
@@ -575,16 +578,13 @@ onclick="gtag('event','download_model',{
    onmouseout="this.style.transform='scale(1)'">
    🚀 Download Stardust OS 💻
 </a>
-                              Stardust OS 💻 💿 is a convenient OS that is AI powered and tailored
-                              to your needs. Star Dust has LM studio LLM and gemma models 
-                              already.
+                               Stardust OS 💻 💿 is a convenient OS that is AI powered and tailored
+                               to your needs. Star Dust has LM studio LLM and gemma models 
+                               already.
 
-                              <a href="https://drive.google.com/file/d/1dYxKR-wbLobHPLmO6vHf6Jh5kbDa4sDd/view?usp=drivesdk"
+                               <a href="https://drive.google.com/file/d/1dYxKR-wbLobHPLmO6vHf6Jh5kbDa4sDd/view?usp=drivesdk"
    target="_blank"
-   onclick="gtag('event', 'download', {
-       event_category: 'Stardust OS',
-       event_label: 'Google Drive Download'
-   });"
+   onclick="trackStardustDownload();"
    style="
       display:inline-block;
       padding:16px 32px;
@@ -601,9 +601,9 @@ onclick="gtag('event','download_model',{
    onmouseout="this.style.transform='scale(1)'">
    🚀 Download Stardust OS 💻
 </a>
-                                
-                              </p>
-                                  
+                                 
+                               </p>
+                                   
 <a class="game-btn"
      href="https://docs.google.com/document/d/1GXG25fZvab2avCTB7-R9wBqr51Q9MM0t/edit?usp=drive_link&ouid=101895727723624334836&rtpof=true&sd=true"
      onclick="gtag('event','download_book', {
@@ -615,233 +615,233 @@ onclick="gtag('event','download_model',{
     
 <div class="download-container">
 </div>
-                                </p>
-                            </div>
-                        </div>
+                                 </p>
+                             </div>
+                         </div>
                         
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>Rocket Engine Parts assembly and Funding.</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>How to utilize Ethereum in<small>Assembly and Integration?</small></h3>
-                             
-                              Find our Crypto token FRRCKETH on Pancake and Metamask.
-                              ETHEREUM address.
-                              0xB90B240157A7ecc099FF8265271382e8E7018aA9
-                              <a href="https://drive.google.com/drive/folders/1U8M48qk2QRJi0UTX2Yw8i8-zwAvtWxhj">
-                      Click here to Contribute via Metamask.
-                           
-                         </a>
-                          <a href ="BuyFreyaToken.html">CLICK HERE TO BUY/FOR OFFERS!</a>
-                      
-                              <p>
-<br>
-                FreyaOS is a convenient Os tailored to your needs and computer.We have released two versions.
-                            </p>
-                           <br>
-                       
-                        <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
-   onclick="gtag('event','download_spaceship_os', {
-      'event_category':'download',
-      'event_label':'Spaceship OS Google Drive'
-   });">
-   Click here to download Spaceship OS a newer neater version of our OS.
-</a>
-
-<br>
-
-<a href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
-   onclick="gtag('event','download_latest_release', {
-      'event_category':'download',
-      'event_label':'2GB release'
-   });">
-   Click here to download our latest release! 2GB file.
-</a>
-                           <br>
-                        <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
-   onclick="gtag('event','download_spaceship_os', {
-      'event_category':'download',
-      'event_label':'Spaceship OS Google Drive'
-   });">
-   Click here to download Spaceship OS a newer neater version of our OS.
-</a>
-             <br>
-                        <a href="https://drive.google.com/file/d/1xdJCtrcwqhx3X-oXLIHtF1DSFGzUJg4G/view?usp=drive_link"
-   onclick="gtag('event','download_asteroid_os', {
-      'event_category':'download',
-      'event_label':'Asteroid OS Google Drive'
-   });">
-   Click here to download Our new Released OS AsteroidOS
-</a>
-<br>
-
-<a href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
-   onclick="gtag('event','download_latest_release', {
-      'event_category':'download',
-      'event_label':'2GB release'
-   });">
-   Click here to download our latest release! 2GB file.
-</a>  
-                           
-                            <div class="timeline-info">
-                              <br>
-                                <h3><span>OPERATING SYSTEM</span><small>Developed Indoors!</small></h3>
-                                <p>Freya OS is an OS developed tailored for low spec computers and is Linux OS based.
-                                  This OS will be used in developing Freya with scalability and user friendliness in mind
-                                
-                                
-                              </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4 mobile-mt-2">Thanks you for you support!</h2>
-
-                    <div class="timeline">
                         <div class="timeline-wrapper">
                              <div class="timeline-yr">
-                                  <span>We've also developed an OS.</span>
+                                 <span>Rocket Engine Parts assembly and Funding.</span>
                              </div>
                              <div class="timeline-info">
-                                  <h3><span>Freya</span><small>Rocket and OS</small></h3>
-                                  <p>Freya is a startup initiative All Rights and Designs are reserved.</p>
-                             </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2026</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Freya Rockets and OS</span><small>Visit out Facebook page here!</small></h3>
-                                <p><a rel="nofollow" href="https://www.facebook.com/FreyaRocketSystems">Facebook </a> Leave us a comment or query on our Facebook page..</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>Freya OS</span>
-                            </div><p>
+                                 <h3><span>How to utilize Ethereum in<small>Assembly and Integration?</small></h3>
+                              
+                               Find our Crypto token FRRCKETH on Pancake and Metamask.
+                               ETHEREUM address.
+                               0xB90B240157A7ecc099FF8265271382e8E7018aA9
+                               <a href="https://drive.google.com/drive/folders/1U8M48qk2QRJi0UTX2Yw8i8-zwAvtWxhj">
+                       Click here to Contribute via Metamask.
+                            
+                          </a>
+                           <a href ="BuyFreyaToken.html">CLICK HERE TO BUY/FOR OFFERS!</a>
+                       
+                               <p>
 <br>
-                FreyaOS is a convenient Os tailored to your needs and computer.We have released two versions.
-                            </p>
-                          <br>
-                          <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
-   onclick="gtag('event','download_spaceship_os', {
-      'event_category':'download',
-      'event_label':'Spaceship OS Google Drive'
-   });">
-   Click here to download Spaceship OS a newer neater version of our OS.
+                 FreyaOS is a convenient Os tailored to your needs and computer.We have released two versions.
+                             </p>
+                            <br>
+                        
+                         <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
+    onclick="gtag('event','download_spaceship_os', {
+       'event_category':'download',
+       'event_label':'Spaceship OS Google Drive'
+    });">
+    Click here to download Spaceship OS a newer neater version of our OS.
 </a>
 
 <br>
 
 <a href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
    onclick="gtag('event','download_latest_release', {
-      'event_category':'download',
-      'event_label':'2GB release'
-   });">
-   Click here to download our latest release! 2GB file.
+       'event_category':'download',
+       'event_label':'2GB release'
+    });">
+    Click here to download our latest release! 2GB file.
 </a>
-                            <div class="timeline-info">
-                              <br>
-                                <h3><span>OPERATING SYSTEM</span><small>Developed Indoors!</small></h3>
-                                <p>Freya OS is an OS developed tailored for low spec computers and is Linux OS based.
-                                  This OS will be used in developing Freya with scalability and user friendliness in mind.
-                                <a href='http://www.freevisitorcounters.com'>Counter</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/en/home/counter/1332956/t/5'></script>
-                                
-                                </p>
-                            </div>
-                        </div>
+                            <br>
+                         <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
+    onclick="gtag('event','download_spaceship_os', {
+       'event_category':'download',
+       'event_label':'Spaceship OS Google Drive'
+    });">
+    Click here to download Spaceship OS a newer neater version of our OS.
+</a>
+              <br>
+                         <a href="https://drive.google.com/file/d/1xdJCtrcwqhx3X-oXLIHtF1DSFGzUJg4G/view?usp=drive_link"
+    onclick="gtag('event','download_asteroid_os', {
+       'event_category':'download',
+       'event_label':'Asteroid OS Google Drive'
+    });">
+    Click here to download Our new Released OS AsteroidOS
+</a>
+<br>
 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
+<a href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
+   onclick="gtag('event','download_latest_release', {
+       'event_category':'download',
+       'event_label':'2GB release'
+    });">
+    Click here to download our latest release! 2GB file.
+</a>  
+                           
+                             <div class="timeline-info">
+                               <br>
+                                 <h3><span>OPERATING SYSTEM</span><small>Developed Indoors!</small></h3>
+                                 <p>Freya OS is an OS developed tailored for low spec computers and is Linux OS based.
+                                   This OS will be used in developing Freya with scalability and user friendliness in mind
+                                 
+                                 
+                               </p>
+                             </div>
+                         </div>
 
-    <!-- CONTACT -->
-    <section class="contact py-5" id="contact">
-      <div class="container">
-        <div class="row">
-          
-          <div class="col-lg-5 mr-lg-5 col-12">
-            <div class="google-map w-100">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12088.558402180099!2d-73.99373482142036!3d40.75895421922642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2585a1234567%3A0x1234567890abcdef!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1234567890" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+                     </div>
+                 </div>
 
-            <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
-                <div class="contact-info-item">
-                  <h3 class="mb-3 text-white">Contact the founder here!</h3>
-                  <p class="footer-text mb-0">+266 5063 7177</p>
-                  <p><a href="mailto:cholomaraka@gmail.com">cholomaraka@gmail.com</a></p>
-                </div>
+                 <div class="col-lg-6 col-12">
+                   <h2 class="mb-4 mobile-mt-2">Thanks you for you support!</h2>
 
-                <ul class="social-links">
-                     <li><a href="#" class="uil uil-dribbble" data-toggle="tooltip" data-placement="left" title="Dribbble"></a></li>
-                     <li><a href="#" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
-                     <li><a href="#" class="uil uil-youtube" data-toggle="tooltip" data-placement="left" title="Youtube"></a></li>
-                </ul>
-            </div>
-          </div>
+                     <div class="timeline">
+                         <div class="timeline-wrapper">
+                              <div class="timeline-yr">
+                                   <span>We've also developed an OS.</span>
+                              </div>
+                              <div class="timeline-info">
+                                   <h3><span>Freya</span><small>Rocket and OS</small></h3>
+                                   <p>Freya is a startup initiative All Rights and Designs are reserved.</p>
+                              </div>
+                         </div>
 
-          <div class="col-lg-6 col-12">
-            <div class="contact-form">
-              <h2 class="mb-4">Contact Us here!</h2>
+                         <div class="timeline-wrapper">
+                             <div class="timeline-yr">
+                                 <span>2026</span>
+                             </div>
+                             <div class="timeline-info">
+                                 <h3><span>Freya Rockets and OS</span><small>Visit out Facebook page here!</small></h3>
+                                 <p><a rel="nofollow" href="https://www.facebook.com/FreyaRocketSystems">Facebook </a> Leave us a comment or query on our Facebook page..</p>
+                             </div>
+                         </div>
+                         
+                         <div class="timeline-wrapper">
+                             <div class="timeline-yr">
+                                 <span>Freya OS</span>
+                             </div><p>
+<br>
+                 FreyaOS is a convenient Os tailored to your needs and computer.We have released two versions.
+                             </p>
+                           <br>
+                           <a href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view?usp=drivesdk"
+    onclick="gtag('event','download_spaceship_os', {
+       'event_category':'download',
+       'event_label':'Spaceship OS Google Drive'
+    });">
+    Click here to download Spaceship OS a newer neater version of our OS.
+</a>
 
-              <form action="" method="get">
+<br>
+
+<a href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view?usp=drive_link"
+   onclick="gtag('event','download_latest_release', {
+       'event_category':'download',
+       'event_label':'2GB release'
+    });">
+    Click here to download our latest release! 2GB file.
+</a>
+                             <div class="timeline-info">
+                               <br>
+                                 <h3><span>OPERATING SYSTEM</span><small>Developed Indoors!</small></h3>
+                                 <p>Freya OS is an OS developed tailored for low spec computers and is Linux OS based.
+                                   This OS will be used in developing Freya with scalability and user friendliness in mind.
+                                 <a href='http://www.freevisitorcounters.com'>Counter</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/en/home/counter/1332956/t/5'></script>
+                                 
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 
+             </div>
+         </div>
+     </section>
+
+     <!-- CONTACT -->
+     <section class="contact py-5" id="contact">
+       <div class="container">
+         <div class="row">
+           
+           <div class="col-lg-5 mr-lg-5 col-12">
+             <div class="google-map w-100">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12088.558402180099!2d-73.99373482142036!3d40.75895421922642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2585[...]
+             </div>
+
+             <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
+                 <div class="contact-info-item">
+                   <h3 class="mb-3 text-white">Contact the founder here!</h3>
+                   <p class="footer-text mb-0">+266 5063 7177</p>
+                   <p><a href="mailto:cholomaraka@gmail.com">cholomaraka@gmail.com</a></p>
+                 </div>
+
+                 <ul class="social-links">
+                      <li><a href="#" class="uil uil-dribbble" data-toggle="tooltip" data-placement="left" title="Dribbble"></a></li>
+                      <li><a href="#" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
+                      <li><a href="#" class="uil uil-youtube" data-toggle="tooltip" data-placement="left" title="Youtube"></a></li>
+                 </ul>
+             </div>
+           </div>
+
+           <div class="col-lg-6 col-12">
+             <div class="contact-form">
+               <h2 class="mb-4">Contact Us here!</h2>
+
+               <form action="" method="get">
+                 <div class="row">
+                   <div class="col-lg-6 col-12">
+                     <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
+                   </div>
+
+                   <div class="col-lg-6 col-12">
+                     <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                   </div>
+
+                   <div class="col-12">
+                     <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
+                   </div>
+
+                   <div class="ml-lg-auto col-lg-5 col-12">
+                     <input type="submit" class="form-control submit-btn" value="Send Button">
+                   </div>
+                 </div>
+               </form>
+             </div>
+           </div>
+
+         </div>
+       </div>
+     </section>
+
+     <!-- FOOTER -->
+      <footer class="footer py-5">
+           <div class="container">
                 <div class="row">
-                  <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
-                  </div>
 
-                  <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
-                  </div>
-
-                  <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Send Button">
-                  </div>
+                     <div class="col-lg-12 col-12">                                
+                         <p class="copyright-text text-center">Copyright &copy; 2024 Freya Rocket OS . All rights reserved</p>
+                         <p class="copyright-text text-center">Terms and Conditions<a rel="nofollow" href="https://www.facebook.com/tooplate">Disclaimer</a></p>
+                     </div>
+                     
                 </div>
-              </form>
-            </div>
-          </div>
+           </div>
+      </footer>
 
-        </div>
-      </div>
-    </section>
+     <script src="jquery-3.3.1.min.js"></script>
+     <script src="popper.min.js"></script>
+     <script src="bootstrap.min.js"></script>
+     <script src="Headroom.js"></script>
+     <script src="jQuery.headroom.js"></script>
+     <script src="owl.carousel.min.js"></script>
+     <script src="smoothscroll.js"></script>
+     <script src="custom.js"></script>
 
-    <!-- FOOTER -->
-     <footer class="footer py-5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-lg-12 col-12">                                
-                        <p class="copyright-text text-center">Copyright &copy; 2024 Freya Rocket OS . All rights reserved</p>
-                        <p class="copyright-text text-center">Terms and Conditions<a rel="nofollow" href="https://www.facebook.com/tooplate">Disclaimer</a></p>
-                    </div>
-                    
-               </div>
-          </div>
-     </footer>
-
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="popper.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="Headroom.js"></script>
-    <script src="jQuery.headroom.js"></script>
-    <script src="owl.carousel.min.js"></script>
-    <script src="smoothscroll.js"></script>
-    <script src="custom.js"></script>
-
-  </body>
+   </body>
 </html>
