@@ -242,6 +242,76 @@
 </style>
 
 
+<!-- Google Analytics gtag.js -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-XR31TKHP5S');
+</script>
+
+<style>
+body {
+    background: #071a33;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #0077ff, #00c6ff);
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 20px #00aaff;
+    transition: 0.3s;
+    border: 2px solid #ffffff;
+}
+
+.download-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #00ffff;
+}
+
+.icon {
+    font-size: 28px;
+}
+</style>
+
+<script>
+function trackOilRigDownload() {
+
+    gtag('event', 'download_oil_rig', {
+        'event_category': 'Blueprint Downloads',
+        'event_label': 'Poseidon Oil Rig blueprints.pdf',
+        'file_name': 'Poseidon Oil Rig blueprints.pdf'
+    });
+
+}
+</script>
+
+
+<h10>⚓ Poseidon Oil Rig</h10>
+<p>Download the official oil rig blueprint design</p>
+
+<a class="download-btn"
+   href="Poseidon Oil Rig blueprints.pdf"
+   download
+   onclick="trackOilRigDownload()">
+
+   <span class="icon">⬇️</span>
+   Download Oil Rig
+
+</a>
+
+
 <a class="download-btn"
 href="https://drive.google.com/uc?export=download&id=13dI-s45EXRAWfOGMk3hEnq2_gLOfno6m"
 onclick="gtag('event','download_model',{
