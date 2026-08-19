@@ -3,7 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Dashboard</title>
+    <title>Game Dashboard - Freya Rockets</title>
+    
+    <!-- Google tag (gtag.js) - Analytics Integration -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} 
+        gtag('js', new Date());
+        gtag('config', 'G-XR31TKHP5S', { anonymize_ip: true });
+
+        // Game Dashboard Tracking Functions
+        function trackGameDownload(gameName) {
+            gtag('event', 'game_download', {
+                'event_category': 'engagement',
+                'event_label': gameName,
+                'value': 1
+            });
+        }
+
+        function trackGameCardView(gameName) {
+            gtag('event', 'game_card_view', {
+                'event_category': 'engagement',
+                'event_label': gameName
+            });
+        }
+
+        function trackGamePageLoad() {
+            gtag('event', 'page_view', {
+                'page_title': 'Game Dashboard',
+                'page_location': window.location.href
+            });
+        }
+
+        function trackVisitorCount(count) {
+            gtag('event', 'visitor_milestone', {
+                'event_category': 'engagement',
+                'event_label': 'Dashboard Visitors',
+                'value': count
+            });
+        }
+
+        function trackExternalGameLink(url, gameName) {
+            gtag('event', 'external_link_click', {
+                'event_category': 'outbound',
+                'event_label': `Game Download - ${gameName}`,
+                'link_url': url
+            });
+        }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -76,6 +125,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+            cursor: pointer;
         }
 
         .game-card:hover {
@@ -110,6 +160,8 @@
             font-weight: bold;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: none;
+            cursor: pointer;
         }
 
         .download-btn:hover {
@@ -150,46 +202,66 @@
     <div class="container">
         <div class="header">
             <h1>🎮 Game Dashboard</h1>
-            <p>Download your favorite games</p>
+            <p>Download your favorite Freya Games</p>
         </div>
 
         <div class="dashboard">
             <!-- Chicken Run -->
-            <div class="game-card">
+            <div class="game-card" onmouseenter="trackGameCardView('Chicken Run')">
                 <div class="game-icon">🐔</div>
                 <h2>Chicken Run</h2>
                 <p>Dash through obstacles in this fun-filled adventure!</p>
-                <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+                <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="trackGameDownload('Chicken Run'); trackExternalGameLink(this.href, 'Chicken Run');">
+                    Download
+                </a>
             </div>
 
             <!-- Droid Warrior -->
-            <div class="game-card">
+            <div class="game-card" onmouseenter="trackGameCardView('Droid Warrior')">
                 <div class="game-icon">🤖</div>
                 <h2>Droid Warrior</h2>
                 <p>Battle as a powerful robot warrior against enemies!</p>
-                <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+                <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="trackGameDownload('Droid Warrior'); trackExternalGameLink(this.href, 'Droid Warrior');">
+                    Download
+                </a>
             </div>
 
             <!-- Battle Star Warrior -->
-            <div class="game-card">
+            <div class="game-card" onmouseenter="trackGameCardView('Battle Star Warrior')">
                 <div class="game-icon">⭐</div>
                 <h2>Battle Star Warrior</h2>
                 <p>Epic space battles await in this action-packed game!</p>
-                <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+                <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="trackGameDownload('Battle Star Warrior'); trackExternalGameLink(this.href, 'Battle Star Warrior');">
+                    Download
+                </a>
             </div>
 
             <!-- Operation Delta -->
-            <div class="game-card">
+            <div class="game-card" onmouseenter="trackGameCardView('Operation Delta')">
                 <div class="game-icon">🎯</div>
                 <h2>Operation Delta</h2>
                 <p>Execute your mission in this tactical action game!</p>
-                <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+                <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');">
+                    Download
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // Initialize visitor counter from localStorage
+        // Initialize and track visitor counter
         function initializeVisitorCounter() {
             const counterKey = 'gamePageVisitors';
             let visitorCount = localStorage.getItem(counterKey);
@@ -202,10 +274,23 @@
             localStorage.setItem(counterKey, visitorCount);
             
             document.getElementById('visitor-count').textContent = visitorCount;
+            
+            // Track visitor milestones (every 10 visitors)
+            if (visitorCount % 10 === 0) {
+                trackVisitorCount(visitorCount);
+            }
         }
 
-        // Run on page load
-        window.addEventListener('load', initializeVisitorCounter);
+        // Track page load on window load
+        window.addEventListener('load', function() {
+            trackGamePageLoad();
+            initializeVisitorCounter();
+        });
+
+        // Alternative: Track on DOMContentLoaded for faster tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeVisitorCounter();
+        });
     </script>
 </body>
 </html>
