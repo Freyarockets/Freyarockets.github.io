@@ -43,6 +43,26 @@
             opacity: 0.9;
         }
 
+        .visitor-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .visitor-counter span {
+            font-size: 1.1em;
+        }
+
         .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -113,10 +133,20 @@
             .game-card {
                 padding: 20px;
             }
+
+            .visitor-counter {
+                position: static;
+                margin-bottom: 30px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="visitor-counter">
+        👥 Visitors: <span id="visitor-count">0</span>
+    </div>
+
     <div class="container">
         <div class="header">
             <h1>🎮 Game Dashboard</h1>
@@ -148,14 +178,34 @@
                 <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
             </div>
 
-            <!-- Bonus Game Slot -->
+            <!-- Operation Delta -->
             <div class="game-card">
                 <div class="game-icon">🎯</div>
-                <h2>Mystery Game</h2>
-                <p>Unlock the fourth game adventure!</p>
-                <a href="https://drive.google.com/file/d/1fKD_FFwP45IrVEgPSvUWd0UaCqVc0NWN/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+                <h2>Operation Delta</h2>
+                <p>Execute your mission in this tactical action game!</p>
+                <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
             </div>
         </div>
     </div>
+
+    <script>
+        // Initialize visitor counter from localStorage
+        function initializeVisitorCounter() {
+            const counterKey = 'gamePageVisitors';
+            let visitorCount = localStorage.getItem(counterKey);
+            
+            if (!visitorCount) {
+                visitorCount = 0;
+            }
+            
+            visitorCount = parseInt(visitorCount) + 1;
+            localStorage.setItem(counterKey, visitorCount);
+            
+            document.getElementById('visitor-count').textContent = visitorCount;
+        }
+
+        // Run on page load
+        window.addEventListener('load', initializeVisitorCounter);
+    </script>
 </body>
 </html>
