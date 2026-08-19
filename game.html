@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .game-card h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .game-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .game-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Game Dashboard</h1>
+            <p>Download your favorite games</p>
+        </div>
+
+        <div class="dashboard">
+            <!-- Game 1 -->
+            <div class="game-card">
+                <div class="game-icon">🎯</div>
+                <h2>Game 1</h2>
+                <p>Download the first game file</p>
+                <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+            </div>
+
+            <!-- Game 2 -->
+            <div class="game-card">
+                <div class="game-icon">⚔️</div>
+                <h2>Game 2</h2>
+                <p>Download the second game file</p>
+                <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+            </div>
+
+            <!-- Game 3 -->
+            <div class="game-card">
+                <div class="game-icon">🚀</div>
+                <h2>Game 3</h2>
+                <p>Download the third game file</p>
+                <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+            </div>
+
+            <!-- Game 4 -->
+            <div class="game-card">
+                <div class="game-icon">⭐</div>
+                <h2>Game 4</h2>
+                <p>Download the fourth game file</p>
+                <a href="https://drive.google.com/file/d/1fKD_FFwP45IrVEgPSvUWd0UaCqVc0NWN/view?usp=drivesdk" target="_blank" class="download-btn">Download</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
