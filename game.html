@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Game Dashboard - Freya Rockets</title>
-    
-    <!-- Google tag (gtag.js) - Analytics Integration -->
+
+    <!-- Google AdSense Auto Ads: replace the client value with your own ca-pub ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4437484592938498" crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) - Analytics Integration (keeps your existing tracking) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR31TKHP5S"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -52,245 +55,390 @@
             });
         }
     </script>
-    
+
+    <!-- Sci-fi font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{
+            --panel-bg: rgba(10,12,20,0.65);
+            --glass: rgba(255,255,255,0.06);
+            --accent: linear-gradient(135deg,#6dd3ff 0%, #6f6cff 100%);
+            --accent-solid: #79a3ff;
+            --text: #dfe9ff;
+            --muted: #9fb0d6;
+            --card-shadow: 0 12px 30px rgba(5,8,20,0.6);
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html,body { height:100%; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: radial-gradient(ellipse at bottom, #021028 0%, #01020a 40%), linear-gradient(180deg, #001022 0%, #00030a 100%);
+            min-height:100vh;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            overflow-x:hidden;
+            padding: 40px 20px;
+            position: relative;
         }
 
+        /* Starfield */
+        .stars, .stars:after {
+            position: fixed;
+            top:0; left:0; right:0; bottom:0;
+            width:100%; height:100%;
+            z-index:0;
+            background: transparent;
+            pointer-events:none;
+        }
+        .stars:after {
+            content: "";
+            background-image:
+                radial-gradient(2px 2px #ffffff30, transparent 40%),
+                radial-gradient(1px 1px #ffffff22, transparent 40%),
+                radial-gradient(1px 1px #aab7ff16, transparent 35%);
+            background-repeat: repeat;
+            background-size: 600px 600px, 400px 400px, 1400px 1400px;
+            opacity: 0.9;
+            animation: starMove 90s linear infinite;
+            mix-blend-mode: screen;
+        }
+        @keyframes starMove { from { transform: translateY(0); } to { transform: translateY(-200px); } }
+
         .container {
-            width: 100%;
-            max-width: 1000px;
+            width:100%;
+            max-width:1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
         }
 
         .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
+            display:flex;
+            align-items:center;
+            gap:18px;
+            margin-bottom: 26px;
+        }
+
+        .ship-badge {
+            width:86px;
+            height:86px;
+            border-radius:14px;
+            background: linear-gradient(180deg,#11162a, #021232);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 6px 24px rgba(10,14,30,0.6), inset 0 -6px 20px rgba(255,255,255,0.02);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:var(--accent-solid);
+            font-size:30px;
+            position:relative;
+            overflow:hidden;
+        }
+        .ship-badge::before {
+            content: "🚀";
+            filter: drop-shadow(0 4px 8px rgba(50,120,255,0.2));
+            transform: translateY(-2px);
         }
 
         .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.2rem;
+            line-height: 1;
+            color: var(--text);
+            text-shadow: 0 6px 18px rgba(30,50,110,0.45);
         }
+        .header p { color: var(--muted); font-size: 0.95rem; margin-top:4px; }
 
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
+        /* Holographic visitor counter */
         .visitor-counter {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 25px;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            font-weight: bold;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border-radius: 14px;
+            padding: 12px 18px;
+            display:flex;
+            gap:10px;
+            align-items:center;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 28px rgba(60,120,255,0.06);
+            border: 1px solid rgba(120,160,255,0.08);
+            color:var(--text);
+            z-index: 20;
+            backdrop-filter: blur(6px) saturate(120%);
+            font-weight:700;
+        }
+        .visitor-counter .value {
+            background: linear-gradient(90deg,#091730, #12305b);
+            padding:6px 10px;
+            border-radius:8px;
+            color: #bfe1ff;
+            font-weight:800;
+            font-size:0.95rem;
+            box-shadow: inset 0 -6px 12px rgba(0,0,0,0.5);
         }
 
-        .visitor-counter span {
-            font-size: 1.1em;
+        /* control panel */
+        .panel {
+            background: linear-gradient(180deg, rgba(6,12,22,0.6), rgba(8,9,16,0.7));
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::after {
+            content: "";
+            position:absolute;
+            right:-120px;
+            top:-120px;
+            width:420px;
+            height:420px;
+            background: radial-gradient(circle at 50% 50%, rgba(110,130,255,0.06), transparent 40%);
+            transform: rotate(25deg);
+            pointer-events:none;
         }
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 14px;
         }
 
         .game-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius: 12px;
+            padding: 20px;
+            color:var(--text);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 260ms, filter 200ms;
+            transform-origin: center;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(6px) saturate(120%);
         }
 
         .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 26px 70px rgba(3,6,30,0.6);
+            filter: saturate(1.06);
         }
 
         .game-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 40px;
+            display:inline-block;
+            width:66px;
+            height:66px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius: 10px;
+            background: linear-gradient(180deg,#0a203b, #061226);
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 6px 18px rgba(6,12,30,0.6);
+            margin-bottom: 12px;
+            color: var(--accent-solid);
         }
 
         .game-card h2 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1.5em;
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 6px;
         }
 
         .game-card p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95em;
+            font-size: 0.87rem;
+            color: var(--muted);
+            margin-bottom: 14px;
+            min-height:42px;
         }
 
         .download-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background: var(--accent);
+            color: #001b2e;
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration:none;
+            font-weight:700;
+            box-shadow: 0 8px 22px rgba(105,125,255,0.18);
+            transition: transform 160ms, box-shadow 160ms;
             border: none;
-            cursor: pointer;
+        }
+        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(105,125,255,0.28); }
+
+        /* small rocket float */
+        .rocket {
+            position:absolute;
+            right:28px;
+            top: -30px;
+            font-size: 56px;
+            transform: rotate(-10deg);
+            opacity: 0.12;
+            filter: drop-shadow(0 8px 20px rgba(80,120,255,0.06));
+            animation: floatRocket 6s ease-in-out infinite;
+            z-index:1;
+            pointer-events:none;
+        }
+        @keyframes floatRocket {
+            0% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(8px) rotate(-6deg); }
+            100% { transform: translateY(0) rotate(-10deg); }
         }
 
-        .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .download-btn:active {
-            transform: scale(0.98);
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .game-card {
-                padding: 20px;
-            }
-
-            .visitor-counter {
-                position: static;
-                margin-bottom: 30px;
-                justify-content: center;
-            }
+        /* Responsive tweaks */
+        @media (max-width: 800px) {
+            .header { gap:12px; align-items: flex-start; }
+            .ship-badge { width:72px; height:72px; font-size:26px; }
+            .visitor-counter { position: static; margin: 18px auto 8px; justify-content:center; }
+            body { padding: 20px 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="visitor-counter">
-        👥 Visitors: <span id="visitor-count">0</span>
+    <div class="stars"></div>
+
+    <div class="visitor-counter" aria-hidden="false">
+        <div style="font-size:18px;">👥</div>
+        <div style="font-size:0.95rem; opacity:0.9;">Visitors</div>
+        <div class="value" id="visitor-count">0</div>
     </div>
 
     <div class="container">
         <div class="header">
-            <h1>🎮 Game Dashboard</h1>
-            <p>Download your favorite Freya Games</p>
+            <div class="ship-badge" title="Freya Rockets">
+                <!-- rocket emoji inside badge (CSS::before) -->
+            </div>
+            <div>
+                <h1>Freya Rockets — Game Hangar</h1>
+                <p>Download and launch games from the ship's manifest</p>
+            </div>
         </div>
 
-        <div class="dashboard">
-            <!-- Chicken Run -->
-            <div class="game-card" onmouseenter="trackGameCardView('Chicken Run')">
-                <div class="game-icon">🐔</div>
-                <h2>Chicken Run</h2>
-                <p>Dash through obstacles in this fun-filled adventure!</p>
-                <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk" 
-                   target="_blank" 
-                   class="download-btn"
-                   onclick="trackGameDownload('Chicken Run'); trackExternalGameLink(this.href, 'Chicken Run');">
-                    Download
-                </a>
-            </div>
+        <div class="panel">
+            <div class="rocket">🚀</div>
 
-            <!-- Droid Warrior -->
-            <div class="game-card" onmouseenter="trackGameCardView('Droid Warrior')">
-                <div class="game-icon">🤖</div>
-                <h2>Droid Warrior</h2>
-                <p>Battle as a powerful robot warrior against enemies!</p>
-                <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk" 
-                   target="_blank" 
-                   class="download-btn"
-                   onclick="trackGameDownload('Droid Warrior'); trackExternalGameLink(this.href, 'Droid Warrior');">
-                    Download
-                </a>
-            </div>
+            <!-- optional top AdSense placeholder (auto ads handle placement; you can also place manual ads here) -->
+            <!-- Example manual ad slot (commented): 
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4437484592938498"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
 
-            <!-- Battle Star Warrior -->
-            <div class="game-card" onmouseenter="trackGameCardView('Battle Star Warrior')">
-                <div class="game-icon">⭐</div>
-                <h2>Battle Star Warrior</h2>
-                <p>Epic space battles await in this action-packed game!</p>
-                <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk" 
-                   target="_blank" 
-                   class="download-btn"
-                   onclick="trackGameDownload('Battle Star Warrior'); trackExternalGameLink(this.href, 'Battle Star Warrior');">
-                    Download
-                </a>
-            </div>
+            <div class="dashboard" id="dashboard">
+                <!-- Chicken Run -->
+                <div class="game-card" data-name="Chicken Run" onmouseenter="trackGameCardView('Chicken Run')">
+                    <div class="game-icon">🐔</div>
+                    <h2>Chicken Run</h2>
+                    <p>Dash through obstacles in this fun-filled adventure!</p>
+                    <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn"
+                       onclick="trackGameDownload('Chicken Run'); trackExternalGameLink(this.href, 'Chicken Run');"
+                    >
+                        Download
+                    </a>
+                </div>
 
-            <!-- Operation Delta -->
-            <div class="game-card" onmouseenter="trackGameCardView('Operation Delta')">
-                <div class="game-icon">🎯</div>
-                <h2>Operation Delta</h2>
-                <p>Execute your mission in this tactical action game!</p>
-                <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk" 
-                   target="_blank" 
-                   class="download-btn"
-                   onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');">
-                    Download
-                </a>
+                <!-- Droid Warrior -->
+                <div class="game-card" data-name="Droid Warrior" onmouseenter="trackGameCardView('Droid Warrior')">
+                    <div class="game-icon">🤖</div>
+                    <h2>Droid Warrior</h2>
+                    <p>Battle as a powerful robot warrior against enemies!</p>
+                    <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn"
+                       onclick="trackGameDownload('Droid Warrior'); trackExternalGameLink(this.href, 'Droid Warrior');"
+                    >
+                        Download
+                    </a>
+                </div>
+
+                <!-- Battle Star Warrior -->
+                <div class="game-card" data-name="Battle Star Warrior" onmouseenter="trackGameCardView('Battle Star Warrior')">
+                    <div class="game-icon">⭐</div>
+                    <h2>Battle Star Warrior</h2>
+                    <p>Epic space battles await in this action-packed game!</p>
+                    <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn"
+                       onclick="trackGameDownload('Battle Star Warrior'); trackExternalGameLink(this.href, 'Battle Star Warrior');"
+                    >
+                        Download
+                    </a>
+                </div>
+
+                <!-- Operation Delta -->
+                <div class="game-card" data-name="Operation Delta" onmouseenter="trackGameCardView('Operation Delta')">
+                    <div class="game-icon">🎯</div>
+                    <h2>Operation Delta</h2>
+                    <p>Execute your mission in this tactical action game!</p>
+                    <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn"
+                       onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');"
+                    >
+                        Download
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Initialize and track visitor counter
-        function initializeVisitorCounter() {
+        // Initialize and track visitor counter (keeps your logic but more robust)
+        (function(){
             const counterKey = 'gamePageVisitors';
-            let visitorCount = localStorage.getItem(counterKey);
-            
-            if (!visitorCount) {
-                visitorCount = 0;
-            }
-            
-            visitorCount = parseInt(visitorCount) + 1;
+            let visitorCount = parseInt(localStorage.getItem(counterKey) || '0', 10);
+            visitorCount = visitorCount + 1;
             localStorage.setItem(counterKey, visitorCount);
-            
             document.getElementById('visitor-count').textContent = visitorCount;
-            
-            // Track visitor milestones (every 10 visitors)
-            if (visitorCount % 10 === 0) {
-                trackVisitorCount(visitorCount);
-            }
-        }
+            // Track milestones
+            if (visitorCount % 10 === 0) trackVisitorCount(visitorCount);
+        })();
 
-        // Track page load on window load
+        // Track page load
         window.addEventListener('load', function() {
             trackGamePageLoad();
-            initializeVisitorCounter();
         });
 
-        // Alternative: Track on DOMContentLoaded for faster tracking
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeVisitorCounter();
-        });
+        // Card tilt interactivity
+        (function initCardTilt(){
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                const rect = () => card.getBoundingClientRect();
+                card.addEventListener('mousemove', e => {
+                    const r = rect();
+                    const px = (e.clientX - r.left) / r.width;
+                    const py = (e.clientY - r.top) / r.height;
+                    const tiltX = (py - 0.5) * 10; // rotateX
+                    const tiltY = (px - 0.5) * -10; // rotateY
+                    card.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 360ms cubic-bezier(.2,.9,.3,1)';
+                    card.style.transform = '';
+                    setTimeout(()=> card.style.transition = '', 360);
+                });
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = '';
+                });
+            });
+        })();
     </script>
 </body>
 </html>
