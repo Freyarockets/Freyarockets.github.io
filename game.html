@@ -56,6 +56,14 @@
                 'link_url': url
             });
         }
+
+        function trackCartGameDownload() {
+            gtag('event', 'cart_game_download', {
+                'event_category': 'engagement',
+                'event_label': 'Cart Racer PC',
+                'value': 1
+            });
+        }
     </script>
 
     <!-- Sci-fi font -->
@@ -393,6 +401,20 @@
                        target="_blank"
                        class="download-btn"
                        onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');"
+                    >
+                        Download
+                    </a>
+                </div>
+
+                <!-- Cart Racer PC -->
+                <div class="game-card" data-name="Cart Racer PC" onmouseenter="trackGameCardView('Cart Racer PC')">
+                    <div class="game-icon">🏎️</div>
+                    <h2>Cart Racer PC</h2>
+                    <p>Conquer the Hill terrain and use nitro for boost in this thrilling race!</p>
+                    <a href="https://drive.google.com/file/d/1Id5hc9WDsht26mZP6uIOmt8CHbo_UJpI/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn"
+                       onclick="trackCartGameDownload(); trackExternalGameLink(this.href, 'Cart Racer PC');"
                     >
                         Download
                     </a>
