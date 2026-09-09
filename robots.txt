@@ -1,0 +1,9 @@
+# Allow search engines to crawl all pages
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://freyarockets.github.io/sitemap.xml
+
+# Crawl delay (optional: adjust as needed)
+Crawl-delay: 1

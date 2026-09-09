@@ -1,0 +1,73 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Collection",
+  "name": "Freya Rockets Game Dashboard",
+  "description": "Download free PC games including Chicken Run, Droid Warrior, Battle Star Warrior, Operation Delta, and Cart Racer PC",
+  "url": "https://freyarockets.github.io/game.html",
+  "image": "https://freyarockets.github.io/og-image.png",
+  "datePublished": "2026-09-09",
+  "dateModified": "2026-09-09",
+  "inLanguage": "en-US",
+  "hasPart": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Chicken Run",
+      "description": "Dash through obstacles in this fun-filled adventure!",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Droid Warrior",
+      "description": "Battle as a powerful robot warrior against enemies!",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Battle Star Warrior",
+      "description": "Epic space battles await in this action-packed game!",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Operation Delta",
+      "description": "Execute your mission in this tactical action game!",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Cart Racer PC",
+      "description": "Conquer the Hill terrain and use nitro for boost in this thrilling race!",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://drive.google.com/file/d/10vkpW0cWqQLj1m2HBx37t8GQkTlraQuS/view?usp=drivesdk"
+    }
+  ]
+}
