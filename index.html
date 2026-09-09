@@ -66,6 +66,10 @@
         'file_name': 'Poseidon Oil Rig blueprints.pdf'
       });
     }
+
+    function trackModelDownload() {
+      gtag('event', 'model_download', { event_category: 'Downloads', event_label: 'FreyaRocket1 3D Printable Model', value: 1 });
+    }
   </script>
 
   <style>
@@ -243,6 +247,11 @@
                   ⬇ Download Oil Rig
                 </a>
 
+                <a class="download-btn ml-2" href="https://drive.google.com/file/d/1sHB1cS-LUwHNTp_1_VlkzinHFNeAtA0I/view?usp=drivesdk" target="_blank" rel="noopener"
+                   onclick="trackModelDownload();">
+                  ⬇ Download FreyaRocket1 3D Printable model
+                </a>
+
                 <div class="mt-3">
                   <button onclick="trackWalletConnect('MetaMask');" class="btn btn-outline-secondary">Connect Wallet</button>
                 </div>
@@ -329,8 +338,8 @@
                 <div class="timeline-info">
                   <h3>Freya OS — Now available</h3>
                   <p>Stardust OS is an AI-powered OS available for download.</p>
-                  <a class="game-btn spaceship" href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view" target="_blank" rel="noopener" onclick="trackStardustDownload();">���[...]</a>
-                  <a class="game-btn release" href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view" target="_blank" rel="noopener" onclick="gtag('event','download_latest_releas[...]')">...</a>
+                  <a class="game-btn spaceship" href="https://drive.google.com/file/d/13IIqgOWSJ_QLY1D2KU6Lr96cfieSERKF/view" target="_blank" rel="noopener" onclick="trackStardustDownload();">🌟 Download Stardust OS</a>
+                  <a class="game-btn release" href="https://drive.google.com/file/d/1QzJljeah7RvpNRpJYwgF0NO02AWQoOZ5/view" target="_blank" rel="noopener" onclick="gtag('event','download_latest_release',{event_category:'Downloads',event_label:'Latest Release',value:1});">🚀 Download Latest Release</a>
                 </div>
               </div>
 
