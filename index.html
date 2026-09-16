@@ -277,6 +277,58 @@ onclick="gtag('event','download_model',{
                   </div>
                 </div>
         </div>
+      <!-- START: Freyarockets Game Button Block (New Tab) -->
+<a href="https://Freyarockets.github.io/game.html" target="_blank" rel="noopener noreferrer" id="playGameLink" class="cool-game-btn">
+    Play Game 🎮
+</a>
+
+<style>
+    /* Scoped Button Design */
+    .cool-game-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        font-size: 18px;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Hover & Active Feedback States */
+    .cool-game-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 30px rgba(79, 172, 254, 0.8);
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    .cool-game-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+    }
+</style>
+
+<script>
+    document.getElementById('playGameLink').addEventListener('click', function() {
+        // Fire analytics seamlessly since the new tab won't disrupt this page thread
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_redirect', {
+                'event_category': 'Engagement',
+                'event_label': 'Freyarockets Game Link Clicked (New Tab)'
+            });
+        }
+    });
+</script>
+<!-- END: Freyarockets Game Button Block -->
+
     </section>
 
     <!-- FEATURES -->
