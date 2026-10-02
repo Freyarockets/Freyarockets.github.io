@@ -91,6 +91,14 @@
                 'value': 1
             });
         }
+
+        function trackAerialAceCombatDownload() {
+            gtag('event', 'aerial_ace_combat_download', {
+                'event_category': 'engagement',
+                'event_label': 'Aerial Ace Combat',
+                'value': 1
+            });
+        }
     </script>
 
     <!-- Sci-fi font -->
@@ -105,6 +113,7 @@
             --text: #dfe9ff;
             --muted: #9fb0d6;
             --card-shadow: 0 12px 30px rgba(5,8,20,0.6);
+            --aerial-accent: linear-gradient(135deg, #ff6b6b 0%, #ff8e00 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -269,6 +278,19 @@
             filter: saturate(1.06);
         }
 
+        /* Special styling for Aerial Ace Combat card */
+        .game-card.aerial-ace {
+            background: linear-gradient(180deg, rgba(255, 107, 107, 0.08), rgba(255, 142, 0, 0.05));
+            border: 1.5px solid rgba(255, 107, 107, 0.3);
+            box-shadow: 0 12px 40px rgba(255, 107, 107, 0.15), 0 0 30px rgba(255, 142, 0, 0.1);
+        }
+
+        .game-card.aerial-ace:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 70px rgba(255, 107, 107, 0.25), 0 0 40px rgba(255, 142, 0, 0.2);
+            filter: saturate(1.1);
+        }
+
         .game-icon {
             font-size: 40px;
             display:inline-block;
@@ -285,10 +307,25 @@
             color: var(--accent-solid);
         }
 
+        .game-icon.aerial {
+            background: linear-gradient(180deg, #3a1010, #2a1010);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+            color: #ff8e00;
+        }
+
         .game-card h2 {
             font-size: 1.05rem;
             color: var(--text);
             margin-bottom: 6px;
+        }
+
+        .game-card.aerial-ace h2 {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
         }
 
         .game-card p {
@@ -311,8 +348,41 @@
             box-shadow: 0 8px 22px rgba(105,125,255,0.18);
             transition: transform 160ms, box-shadow 160ms;
             border: none;
+            cursor: pointer;
         }
         .download-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(105,125,255,0.28); }
+
+        /* Aerial Ace Combat button with custom styling */
+        .download-btn.aerial-ace-btn {
+            background: var(--aerial-accent);
+            color: #fff;
+            box-shadow: 0 8px 26px rgba(255, 107, 107, 0.3), 0 0 20px rgba(255, 142, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn.aerial-ace-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: aerialShine 3s infinite;
+        }
+
+        @keyframes aerialShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .download-btn.aerial-ace-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(255, 107, 107, 0.4), 0 0 30px rgba(255, 142, 0, 0.3);
+            filter: brightness(1.1);
+        }
 
         /* small rocket float */
         .rocket {
@@ -460,21 +530,36 @@
                     >
                         Download
                     </a>
-<!-- Chaotic Driver Game-->
-                <div class="game-card" data-name="WW2 Zombie Apocalypse" onmouseenter="trackGameCardView('WW2 Zombie Apocalypse')">
+                </div>
+
+                <!-- Chaotic Driver Game-->
+                <div class="game-card" data-name="Chaotic Driver" onmouseenter="trackGameCardView('Chaotic Driver')">
                     <div class="game-icon">🏎️🏍️🏎️🏍️</div>
-                    <h7>Chaotic Driver</h7>
-                    <p>Chaotic Driver game.Racing through the streets and avoid obstacles.</p>
+                    <h2>Chaotic Driver</h2>
+                    <p>Racing through the streets and avoid obstacles.</p>
                     <a href="https://drive.google.com/file/d/1XYPVCKUqsqMPU5vE1GgTCqSMo1A1ovRE/view?usp=drivesdk"
                        target="_blank"
                        class="download-btn"
-                       onclick="trackGameDownload('Chaotic Driver'); trackExternalGameLink(this.href, 'WW2 Zombie Apocalypse');"
+                       onclick="trackGameDownload('Chaotic Driver'); trackExternalGameLink(this.href, 'Chaotic Driver');"
                     >
-                        Download Chaotic Driver 🏎️🏍️🏎️🏍️
+                        Download Chaotic Driver 🏎️🏍️
+                    </a>
+                </div>
+
+                <!-- Aerial Ace Combat -->
+                <div class="game-card aerial-ace" data-name="Aerial Ace Combat" onmouseenter="trackGameCardView('Aerial Ace Combat')">
+                    <div class="game-icon aerial">✈️</div>
+                    <h2>Aerial Ace Combat</h2>
+                    <p>Dominate the skies in intense aerial dogfights! Master your jet and become the ultimate combat pilot.</p>
+                    <a href="https://drive.google.com/file/d/1Dzm2iq1PZ8ZNbBK9-ia90q1amGxJ8mLn/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn aerial-ace-btn"
+                       onclick="trackAerialAceCombatDownload(); trackExternalGameLink(this.href, 'Aerial Ace Combat'); trackGameDownload('Aerial Ace Combat');"
+                    >
+                        🎮 LAUNCH MISSION
                     </a>
                 </div>
                     
-                </div>
             </div>
         </div>
     </div>
