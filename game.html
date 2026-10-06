@@ -99,6 +99,14 @@
                 'value': 1
             });
         }
+
+        function trackBatmanDownload() {
+            gtag('event', 'batman_shadow_of_gotham_download', {
+                'event_category': 'engagement',
+                'event_label': 'Batman Shadow of Gotham',
+                'value': 1
+            });
+        }
     </script>
 
     <!-- Sci-fi font -->
@@ -114,6 +122,7 @@
             --muted: #9fb0d6;
             --card-shadow: 0 12px 30px rgba(5,8,20,0.6);
             --aerial-accent: linear-gradient(135deg, #ff6b6b 0%, #ff8e00 100%);
+            --batman-accent: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -291,6 +300,19 @@
             filter: saturate(1.1);
         }
 
+        /* Special styling for Batman Shadow of Gotham card */
+        .game-card.batman {
+            background: linear-gradient(180deg, rgba(255, 200, 0, 0.08), rgba(0, 0, 0, 0.2));
+            border: 1.5px solid rgba(255, 200, 0, 0.3);
+            box-shadow: 0 12px 40px rgba(255, 200, 0, 0.15), 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-card.batman:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 70px rgba(255, 200, 0, 0.25), 0 0 40px rgba(45, 45, 45, 0.4);
+            filter: saturate(1.1);
+        }
+
         .game-icon {
             font-size: 40px;
             display:inline-block;
@@ -314,6 +336,13 @@
             color: #ff8e00;
         }
 
+        .game-icon.batman {
+            background: linear-gradient(180deg, #1a1a1a, #2d2d2d);
+            border: 1px solid rgba(255, 200, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 200, 0, 0.2);
+            color: #ffc800;
+        }
+
         .game-card h2 {
             font-size: 1.05rem;
             color: var(--text);
@@ -322,6 +351,14 @@
 
         .game-card.aerial-ace h2 {
             background: linear-gradient(90deg, #ff6b6b, #ff8e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .game-card.batman h2 {
+            background: linear-gradient(90deg, #ffc800, #ffb300);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -382,6 +419,42 @@
             transform: translateY(-4px);
             box-shadow: 0 14px 36px rgba(255, 107, 107, 0.4), 0 0 30px rgba(255, 142, 0, 0.3);
             filter: brightness(1.1);
+        }
+
+        /* Batman Shadow of Gotham button with custom styling */
+        .download-btn.batman-btn {
+            background: var(--batman-accent);
+            color: #ffc800;
+            box-shadow: 0 8px 26px rgba(255, 200, 0, 0.3), 0 0 20px rgba(45, 45, 45, 0.4);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 200, 0, 0.4);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .download-btn.batman-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 200, 0, 0.15), transparent);
+            transform: rotate(45deg);
+            animation: batmanShine 3s infinite;
+        }
+
+        @keyframes batmanShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .download-btn.batman-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(255, 200, 0, 0.5), 0 0 30px rgba(255, 200, 0, 0.4);
+            filter: brightness(1.15);
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
         }
 
         /* small rocket float */
@@ -557,6 +630,20 @@
                        onclick="trackAerialAceCombatDownload(); trackExternalGameLink(this.href, 'Aerial Ace Combat'); trackGameDownload('Aerial Ace Combat');"
                     >
                         🎮 LAUNCH MISSION
+                    </a>
+                </div>
+
+                <!-- Batman Shadow of Gotham -->
+                <div class="game-card batman" data-name="Batman Shadow of Gotham" onmouseenter="trackGameCardView('Batman Shadow of Gotham')">
+                    <div class="game-icon batman">🦇</div>
+                    <h2>Batman Shadow of Gotham</h2>
+                    <p>Stalk the shadows and defend Gotham from the darkness. Unleash the Dark Knight within!</p>
+                    <a href="https://drive.google.com/file/d/1z2fbpY90HitszcaDi3mIqI-3PRCoqejr/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn batman-btn"
+                       onclick="trackBatmanDownload(); trackExternalGameLink(this.href, 'Batman Shadow of Gotham'); trackGameDownload('Batman Shadow of Gotham');"
+                    >
+                        🦇 RISE FROM SHADOWS
                     </a>
                 </div>
                     
