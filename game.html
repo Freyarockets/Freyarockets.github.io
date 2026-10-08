@@ -107,6 +107,14 @@
                 'value': 1
             });
         }
+
+        function trackBrowserDownload() {
+            gtag('event', 'browser_download', {
+                'event_category': 'engagement',
+                'event_label': 'FreyaBrowser',
+                'value': 1
+            });
+        }
     </script>
 
     <!-- Sci-fi font -->
@@ -123,6 +131,7 @@
             --card-shadow: 0 12px 30px rgba(5,8,20,0.6);
             --aerial-accent: linear-gradient(135deg, #ff6b6b 0%, #ff8e00 100%);
             --batman-accent: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            --browser-accent: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -313,6 +322,19 @@
             filter: saturate(1.1);
         }
 
+        /* Special styling for FreyaBrowser card */
+        .game-card.browser {
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.08), rgba(0, 153, 255, 0.05));
+            border: 1.5px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15), 0 0 30px rgba(0, 153, 255, 0.1);
+        }
+
+        .game-card.browser:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 70px rgba(0, 212, 255, 0.25), 0 0 40px rgba(0, 153, 255, 0.2);
+            filter: saturate(1.1);
+        }
+
         .game-icon {
             font-size: 40px;
             display:inline-block;
@@ -343,6 +365,13 @@
             color: #ffc800;
         }
 
+        .game-icon.browser {
+            background: linear-gradient(180deg, #001a2e, #002a4e);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
         .game-card h2 {
             font-size: 1.05rem;
             color: var(--text);
@@ -359,6 +388,14 @@
 
         .game-card.batman h2 {
             background: linear-gradient(90deg, #ffc800, #ffb300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .game-card.browser h2 {
+            background: linear-gradient(90deg, #00d4ff, #0099ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -455,6 +492,38 @@
             box-shadow: 0 14px 36px rgba(255, 200, 0, 0.5), 0 0 30px rgba(255, 200, 0, 0.4);
             filter: brightness(1.15);
             background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        /* FreyaBrowser button with custom styling */
+        .download-btn.browser-btn {
+            background: var(--browser-accent);
+            color: #fff;
+            box-shadow: 0 8px 26px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 153, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn.browser-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: browserShine 3s infinite;
+        }
+
+        @keyframes browserShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .download-btn.browser-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(0, 212, 255, 0.4), 0 0 30px rgba(0, 153, 255, 0.3);
+            filter: brightness(1.1);
         }
 
         /* small rocket float */
@@ -644,6 +713,20 @@
                        onclick="trackBatmanDownload(); trackExternalGameLink(this.href, 'Batman Shadow of Gotham'); trackGameDownload('Batman Shadow of Gotham');"
                     >
                         🦇 RISE FROM SHADOWS
+                    </a>
+                </div>
+
+                <!-- FreyaBrowser -->
+                <div class="game-card browser" data-name="FreyaBrowser" onmouseenter="trackGameCardView('FreyaBrowser')">
+                    <div class="game-icon browser">🌐</div>
+                    <h2>FreyaBrowser</h2>
+                    <p>Lightning-fast web browser with intuitive navigation and seamless browsing experience!</p>
+                    <a href="https://drive.google.com/file/d/1mI8JAvdzFISpKonAxN9DWm-a0xFwwuQF/view?usp=drivesdk"
+                       target="_blank"
+                       class="download-btn browser-btn"
+                       onclick="trackBrowserDownload(); trackExternalGameLink(this.href, 'FreyaBrowser'); trackGameDownload('FreyaBrowser');"
+                    >
+                        🌐 LAUNCH BROWSER
                     </a>
                 </div>
                     
