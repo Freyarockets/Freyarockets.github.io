@@ -92,6 +92,14 @@
             });
         }
 
+        function trackF1KartDownload() {
+            gtag('event', 'f1_kart_game_download', {
+                'event_category': 'engagement',
+                'event_label': 'F1 Kart Game',
+                'value': 1
+            });
+        }
+
         function trackAerialAceCombatDownload() {
             gtag('event', 'aerial_ace_combat_download', {
                 'event_category': 'engagement',
@@ -637,9 +645,9 @@
                     <h2>Chicken Run</h2>
                     <p>Dash through obstacles in this fun-filled adventure!</p>
                     <a href="https://drive.google.com/file/d/1SwLJMX_bF49MEeJTAP-eGNsll-qfleW3/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('Chicken Run'); trackExternalGameLink(this.href, 'Chicken Run');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('Chicken Run'); trackExternalGameLink(this.href, 'Chicken Run');"
                     >
                         Download
                     </a>
@@ -651,9 +659,9 @@
                     <h2>Droid Warrior</h2>
                     <p>Battle as a powerful robot warrior against enemies!</p>
                     <a href="https://drive.google.com/file/d/1vHhIh0ICAT_PBw8zC6HlU5dnbTrAkmKO/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('Droid Warrior'); trackExternalGameLink(this.href, 'Droid Warrior');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('Droid Warrior'); trackExternalGameLink(this.href, 'Droid Warrior');"
                     >
                         Download
                     </a>
@@ -666,9 +674,9 @@
                     <h6>WW2 Zombie Apocalypse</h6>
                     <p>Survive the zombie apocalypse and battle against soldier zombies.</p>
                     <a href="https://drive.google.com/file/d/18L5Zwsd9BoY1jadDzYYMPgqE9ZHPomYp/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('WW2 Zombie Apocalypse'); trackExternalGameLink(this.href, 'WW2 Zombie Apocalypse');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('WW2 Zombie Apocalypse'); trackExternalGameLink(this.href, 'WW2 Zombie Apocalypse');"
                     >
                         Download 🧟💀☠️ Zombie Apocalypse 
                     </a>
@@ -680,9 +688,9 @@
                     <h2>Battle Star Warrior</h2>
                     <p>Epic space battles await in this action-packed game!</p>
                     <a href="https://drive.google.com/file/d/1xSQnmsHzhi3-D3qQniUPjIA1KlEwXhm1/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('Battle Star Warrior'); trackExternalGameLink(this.href, 'Battle Star Warrior');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('Battle Star Warrior'); trackExternalGameLink(this.href, 'Battle Star Warrior');"
                     >
                         Download
                     </a>
@@ -694,9 +702,9 @@
                     <h2>Operation Delta</h2>
                     <p>Execute your mission in this tactical action game!</p>
                     <a href="https://drive.google.com/file/d/1fU8wTXqIlcQFmw-sTz2JDgnTlGfSp6Vd/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('Operation Delta'); trackExternalGameLink(this.href, 'Operation Delta');"
                     >
                         Download
                     </a>
@@ -708,11 +716,25 @@
                     <h2>Cart Racer PC</h2>
                     <p>Conquer the Hill terrain and use nitro for boost in this thrilling race!</p>
                     <a href="https://drive.google.com/file/d/10vkpW0cWqQLj1m2HBx37t8GQkTlraQuS/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackCartGameDownload(); trackExternalGameLink(this.href, 'Cart Racer PC');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackCartGameDownload(); trackExternalGameLink(this.href, 'Cart Racer PC');"
                     >
                         Download
+                    </a>
+                </div>
+
+                <!-- F1 Kart Game -->
+                <div class="game-card" data-name="F1 Kart Game" onmouseenter="trackGameCardView('F1 Kart Game')">
+                    <div class="game-icon">🏁</div>
+                    <h2>F1 Kart Game</h2>
+                    <p>Race through the circuit with speed, precision, and high-powered boosts!</p>
+                    <a href="https://drive.google.com/file/d/1vWdhYIvQxmX24EX4IMis_h1ilYEo9o1M/view?usp=drivesdk"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackF1KartDownload(); trackGameDownload('F1 Kart Game'); trackExternalGameLink(this.href, 'F1 Kart Game');"
+                    >
+                        Download F1 Kart Game
                     </a>
                 </div>
 
@@ -722,9 +744,9 @@
                     <h2>Chaotic Driver</h2>
                     <p>Racing through the streets and avoid obstacles.</p>
                     <a href="https://drive.google.com/file/d/1XYPVCKUqsqMPU5vE1GgTCqSMo1A1ovRE/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn"
-                       onclick="trackGameDownload('Chaotic Driver'); trackExternalGameLink(this.href, 'Chaotic Driver');"
+                        target="_blank"
+                        class="download-btn"
+                        onclick="trackGameDownload('Chaotic Driver'); trackExternalGameLink(this.href, 'Chaotic Driver');"
                     >
                         Download Chaotic Driver 🏎️🏍️
                     </a>
@@ -736,9 +758,9 @@
                     <h2>Aerial Ace Combat</h2>
                     <p>Dominate the skies in intense aerial dogfights! Master your jet and become the ultimate combat pilot.</p>
                     <a href="https://drive.google.com/file/d/1Dzm2iq1PZ8ZNbBK9-ia90q1amGxJ8mLn/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn aerial-ace-btn"
-                       onclick="trackAerialAceCombatDownload(); trackExternalGameLink(this.href, 'Aerial Ace Combat'); trackGameDownload('Aerial Ace Combat');"
+                        target="_blank"
+                        class="download-btn aerial-ace-btn"
+                        onclick="trackAerialAceCombatDownload(); trackExternalGameLink(this.href, 'Aerial Ace Combat'); trackGameDownload('Aerial Ace Combat');"
                     >
                         🎮 LAUNCH MISSION
                     </a>
@@ -750,9 +772,9 @@
                     <h2>Batman Shadow of Gotham</h2>
                     <p>Stalk the shadows and defend Gotham from the darkness. Unleash the Dark Knight within!</p>
                     <a href="https://drive.google.com/file/d/1z2fbpY90HitszcaDi3mIqI-3PRCoqejr/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn batman-btn"
-                       onclick="trackBatmanDownload(); trackExternalGameLink(this.href, 'Batman Shadow of Gotham'); trackGameDownload('Batman Shadow of Gotham');"
+                        target="_blank"
+                        class="download-btn batman-btn"
+                        onclick="trackBatmanDownload(); trackExternalGameLink(this.href, 'Batman Shadow of Gotham'); trackGameDownload('Batman Shadow of Gotham');"
                     >
                         🦇 RISE FROM SHADOWS
                     </a>
@@ -765,9 +787,9 @@
                     <div class="premium-tag">Premium</div>
                     <p>Lightning-fast web browser with intuitive navigation, private browsing, and a premium launch experience.</p>
                     <a href="https://drive.google.com/file/d/1mI8JAvdzFISpKonAxN9DWm-a0xFwwuQF/view?usp=drivesdk"
-                       target="_blank"
-                       class="download-btn browser-btn"
-                       onclick="trackBrowserDownload(); trackExternalGameLink(this.href, 'FreyaBrowser'); trackGameDownload('FreyaBrowser');"
+                        target="_blank"
+                        class="download-btn browser-btn"
+                        onclick="trackBrowserDownload(); trackExternalGameLink(this.href, 'FreyaBrowser'); trackGameDownload('FreyaBrowser');"
                     >
                         🌐 Launch Browser
                     </a>
