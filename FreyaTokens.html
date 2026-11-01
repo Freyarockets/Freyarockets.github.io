@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4437484592938498"
+         crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freya Tokens - Buy & Sell</title>
@@ -366,7 +368,6 @@
             <button class="tab-btn" data-tab="sell">Sell</button>
         </div>
 
-        <!-- Buy Tab -->
         <div class="tab-content active" id="buy">
             <div class="form-group">
                 <label for="buyAmount">Amount (ETH)</label>
@@ -382,7 +383,6 @@
             <button class="action-btn buy-btn" id="buyBtn" disabled>Buy Freya Tokens</button>
         </div>
 
-        <!-- Sell Tab -->
         <div class="tab-content" id="sell">
             <div class="form-group">
                 <label for="sellAmount">Amount (FREYA)</label>
@@ -405,11 +405,8 @@
         </div>
     </div>
 
-    <!-- Web3.js CDN -->
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.8.0/dist/web3.min.js"></script>
-    
     <script>
-        // Configuration
         const CONFIG = {
             TOKEN_CONTRACT_ADDRESS: '0xE3240d094fe549E365033688c9DeBe645bA44db6',
             TOKEN_DECIMALS: 18,
@@ -419,9 +416,8 @@
 
         let currentAccount = null;
         let web3 = null;
-        let tokenPrice = 0.50; // Default price in ETH
+        let tokenPrice = 0.50;
 
-        // DOM Elements
         const connectBtn = document.getElementById('connectBtn');
         const alert = document.getElementById('alert');
         const buyBtn = document.getElementById('buyBtn');
@@ -430,14 +426,12 @@
         const sellAmount = document.getElementById('sellAmount');
         const tabButtons = document.querySelectorAll('.tab-btn');
 
-        // Event Listeners
         connectBtn.addEventListener('click', connectWallet);
         buyBtn.addEventListener('click', executeBuy);
         sellBtn.addEventListener('click', executeSell);
         buyAmount.addEventListener('input', updateBuyPreview);
         sellAmount.addEventListener('input', updateSellPreview);
 
-        // Tab switching
         tabButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const tabName = e.target.getAttribute('data-tab');
@@ -445,19 +439,13 @@
             });
         });
 
-        // Initialize
         checkIfWalletIsConnected();
         fetchEtherscanTokenMetrics();
-        setInterval(fetchEtherscanTokenMetrics, 60000); // Update every minute
-
-        // ==================== Etherscan Integration ====================
+        setInterval(fetchEtherscanTokenMetrics, 60000);
 
         async function fetchEtherscanTokenMetrics() {
             try {
-                // Fetch token info including total supply
                 const tokenInfoUrl = `${CONFIG.ETHERSCAN_URL}?module=token&action=tokeninfo&contractaddress=${CONFIG.TOKEN_CONTRACT_ADDRESS}&apikey=${CONFIG.ETHERSCAN_API_KEY}`;
-                
-                // Fetch token holder count
                 const holderUrl = `${CONFIG.ETHERSCAN_URL}?module=token&action=tokenholderchart&contractaddress=${CONFIG.TOKEN_CONTRACT_ADDRESS}&page=1&offset=10&sort=desc&apikey=${CONFIG.ETHERSCAN_API_KEY}`;
 
                 const [tokenResponse, holderResponse] = await Promise.all([
@@ -474,7 +462,6 @@
                 }
             } catch (error) {
                 console.error('Error fetching Etherscan data:', error);
-                // Use fallback values
                 updateMetricsDisplay({
                     totalSupply: '1000000000000000000000000',
                     name: 'Freya Token',
@@ -491,17 +478,14 @@
                     maximumFractionDigits: 2
                 });
 
-                // Estimate market cap (assuming current price)
                 const marketCapValue = (totalSupply / Math.pow(10, decimals)) * tokenPrice;
                 const marketCapFormatted = '$' + marketCapValue.toLocaleString('en-US', {
                     maximumFractionDigits: 0
                 });
 
-                // Update UI
                 document.getElementById('tokenPrice').textContent = '$' + tokenPrice.toFixed(2);
                 document.getElementById('marketCap').textContent = marketCapFormatted;
 
-                // Log for debugging
                 console.log('Token Metrics Updated:', {
                     totalSupply: totalSupplyFormatted,
                     marketCap: marketCapFormatted,
@@ -511,8 +495,6 @@
                 console.error('Error updating metrics display:', error);
             }
         }
-
-        // ==================== Wallet Functions ====================
 
         async function checkIfWalletIsConnected() {
             if (typeof window.ethereum !== 'undefined') {
@@ -601,7 +583,6 @@
                 document.getElementById('walletBalance').textContent = 
                     parseFloat(ethBalance).toFixed(4);
                 
-                // Get token balance (mock for now - replace with actual contract call)
                 const tokenBalance = await getTokenBalance();
                 document.getElementById('tokenBalance').textContent = 
                     parseFloat(tokenBalance).toFixed(2);
@@ -619,9 +600,7 @@
         }
 
         async function getTokenBalance() {
-            // This is a mock. Replace with actual token balance call
             try {
-                // In production, call the token contract's balanceOf function
                 return "1000.50";
             } catch (error) {
                 console.error('Error getting token balance:', error);
@@ -639,8 +618,6 @@
             sellBtn.disabled = true;
             showAlert('Wallet disconnected', 'info');
         }
-
-        // ==================== Trading Functions ====================
 
         function updateBuyPreview() {
             const ethAmount = parseFloat(buyAmount.value) || 0;
@@ -672,15 +649,12 @@
                 buyBtn.disabled = true;
                 buyBtn.textContent = 'Processing...';
 
-                // In production, this would call the actual swap function
-                // For now, we'll simulate it
                 const txHash = await mockTransaction();
                 
                 showAlert(`✓ Transaction pending! Hash: ${txHash.substring(0, 10)}...`, 'success');
                 buyAmount.value = '';
                 updateBuyPreview();
                 
-                // Update balances after delay
                 setTimeout(updateWalletUI, 5000);
 
             } catch (error) {
@@ -726,11 +700,8 @@
         }
 
         async function mockTransaction() {
-            // This simulates a transaction - replace with actual contract interaction
             return '0x' + Math.random().toString(16).substring(2, 66);
         }
-
-        // ==================== UI Functions ====================
 
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => {
